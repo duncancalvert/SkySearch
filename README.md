@@ -11,7 +11,7 @@ UChicago Robotics Capstone 2024
 | --- | --- |
 | Testing | N/A |
 | Package | [![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org)|
-| Meta | [![License - BSD 3-Clause](https://img.shields.io/pypi/l/pandas.svg)](https://github.com/pandas-dev/pandas/blob/main/LICENSE) [![Planner](https://img.shields.io/badge/join_Slack-information-brightgreen.svg?logo=slack)](https://pandas.pydata.org/docs/dev/development/community.html?highlight=slack#community-slack) |
+| Meta | [![License - MIT-Clause](https://img.shields.io/pypi/l/pandas.svg)](https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE) [![Planner](https://img.shields.io/badge/join_Slack-information-brightgreen.svg?logo=slack)](https://pandas.pydata.org/docs/dev/development/community.html?highlight=slack#community-slack) |
 
 
 ## What is it?
