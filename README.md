@@ -11,7 +11,7 @@ UChicago Robotics Capstone 2024
 | --- | --- |
 | Testing | planned |
 | Package | [![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org)|
-| Meta | [License - MIT-Clause](https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE), [Planner](https://tasks.office.com/uchicagoedu.onmicrosoft.com/en-US/Home/Planner/#/plantaskboard?groupId=628cb9c8-9d50-4637-bf24-97c6dc69dcd0&planId=NsaYBJB_O0yTWmSdtJf0t2QAHnMA) |
+| Meta | [License - MIT](https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE), [Planner](https://tasks.office.com/uchicagoedu.onmicrosoft.com/en-US/Home/Planner/#/plantaskboard?groupId=628cb9c8-9d50-4637-bf24-97c6dc69dcd0&planId=NsaYBJB_O0yTWmSdtJf0t2QAHnMA) |
 
 
 ## What is it?
