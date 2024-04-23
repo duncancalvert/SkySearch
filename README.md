@@ -16,7 +16,7 @@ UChicago Robotics Capstone 2024
 
 ## What is it?
 
-**SkySearch** is an open source Python package that allows simple, flexible, and robust DJI drone swarms for search and rescue. Specifically, it provides a command center UI layer, flight controls, AI modeling extensibility, and speech-to-text for drone commands.
+**SkySearch** is an open source Python package that allows simple, flexible, and robust DJI drone swarm capabilities tailored for Search & Rescue. Specifically, it provides a command center UI layer, flight controls, AI modeling extensibility, and speech-to-text for drone commands.
 
 ## Table of Contents
 
