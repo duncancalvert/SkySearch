@@ -1,6 +1,6 @@
-<picture align="center">
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/Media/Images/SkySearchLogo3.jpeg">
-  <img alt="SkySearch Logo" src="https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/Media/Images/SkySearchLogo3.jpeg" style="width:200px;height:300px;">
+<picture align="left">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/Media/Images/SkySearchLogo3.jpeg" width="128" height="128">
+  <img alt="SkySearch Logo" src="https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/Media/Images/SkySearchLogo3.jpeg" width="128" height="128">
 </picture>
 
 -------------
