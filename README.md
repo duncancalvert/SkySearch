@@ -7,6 +7,7 @@
 # SkySearch: Missing Person Identification Using Aerial Drone Sensing and Textual Description
 UChicago Robotics Capstone 2024
 
+| | |
 | --- | --- |
 | Testing | N/A |
 | Package | [![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org)|
