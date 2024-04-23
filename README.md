@@ -1,5 +1,5 @@
 <picture align="center">
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/Media/Images/SkySearchLogo3.jpeg" style="width:500px;height:600px;">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/Media/Images/SkySearchLogo3.jpeg" style="width:200px;height:300px;">
   <img alt="SkySearch Logo" src="https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/Media/Images/SkySearchLogo3.jpeg">
 </picture>
 
