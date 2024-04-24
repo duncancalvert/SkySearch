@@ -3,5 +3,10 @@ requires = ["setuptools>=42",
             "pandas",
             "numpy",
             "datetime",
-            ]
+            "keyboard",
+            "time",
+            "threading",
+            "socket",
+            "sys",
+            "pygame"]
 build-backend = "setuptools.build_meta"
