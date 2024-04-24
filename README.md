@@ -4,7 +4,7 @@
 </picture>
 
 -------------
-# SkySearch: Missing Person Identification Using Aerial Drone Sensing and Textual Description
+# SkySearch: Missing Person Identification Using Aerial Drone Sensing
 UChicago Robotics Capstone 2024
 
 | | |
