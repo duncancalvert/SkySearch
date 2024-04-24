@@ -31,13 +31,13 @@ UChicago Robotics Capstone 2024
 - [Getting Help](#getting-help)
 - [Discussion and Development](#discussion-and-development)
 
-# Main Features
+## Main Features
 
-# Where to get it
+## Where to get it
 
-# Dependencies
+## Dependencies
 
-# Installation from sources
+## Installation from sources
 
 
 
