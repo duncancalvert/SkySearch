@@ -5,10 +5,6 @@ import cv2
 import math
 
 
-# Global Variable
-# global img
-
-
 def Tello_Connect():
     # Start Connection With Drone
     tello = Tello()

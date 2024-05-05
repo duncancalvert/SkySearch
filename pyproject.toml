@@ -8,5 +8,8 @@ requires = ["setuptools>=42",
             "threading",
             "socket",
             "sys",
-            "pygame"]
+            "pygame",
+            "streamlit>=1.30",
+            "streamlit-webrtc>=0.47",
+            "opencv-python>=4.9"]
 build-backend = "setuptools.build_meta"
