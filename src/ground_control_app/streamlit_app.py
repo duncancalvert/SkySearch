@@ -87,6 +87,8 @@ def main():
         st.sidebar.title('Settings')
         st.subheader('Speech-to-Text Commands')
 
+
+
     with col2:
         st.subheader('Map')
 
