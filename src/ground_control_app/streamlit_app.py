@@ -17,6 +17,24 @@ import torch
 st.set_page_config(layout="wide")
 
 
+# Define a function to center the title
+def centered_title(title):
+    # Use custom CSS to center the title
+    st.markdown(
+        f"""
+        <style>
+        .centered-title {{
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+        }}
+        </style>
+        <div class="centered-title">{title}</div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def save_uploaded_file(uploaded_file, save_directory):
     """
     Save an uploaded file to a specified directory.
@@ -53,42 +71,67 @@ def main():
     :return: page UI displayed on web browser
     """
 
-    # --- Base page configurations
-    st.title("SkySearch Ground Control")
+    # --- Page Title
+    centered_title("SkySearch Ground Control")
+
+    # Create two equal sized columns
+    col1, col2 = st.columns(2)
 
     # --- Turn on the webcam
-    webrtc_streamer(
-        key="streamer",
-        sendback_audio=False
-    )
-    st.sidebar.title('Settings')
+    with col1:
+        st.subheader('Drone camera feed')
+        webrtc_streamer(
+            key="streamer",
+            sendback_audio=False
+        )
+        st.sidebar.title('Settings')
+        st.subheader('Speech-to-Text Commands')
+
+    with col2:
+        st.subheader('Map')
 
     # --- Buttons
     st.sidebar.header('Commands')
-    col1, col2, col3 = st.columns(3)
     take_off_button = st.sidebar.button("Take Off")
     flip_button = st.sidebar.button("Flip")
     circle_button = st.sidebar.button("Circle")
 
     # --- Facial recognition accuracy slider
     st.sidebar.header('Optimizers')
-    facial_rec_slider = st.sidebar.slider('Facial Recognition Confidence Threshold ', 0, 100, 25)
+    facial_rec_slider = st.sidebar.slider('Confidence Threshold ', 0, 100, 25)
 
     # --- CoCo names selection
     option = st.sidebar.multiselect(
         'What would you like to find?',
         ('Blue', 'Red', 'Green'))
 
-    # --- File uploader
-    uploaded_file = st.sidebar.file_uploader("Upload an image of what you're trying to find", type=["png", "jpg", "jpeg", "txt", "csv", "pdf", "docx", "xlsx"])
-    if uploaded_file is not None:
-        # Specify the directory where the file will be saved
-        save_directory = "SkySearch_UAV/.config/git/ignore/data/uploaded_data/"
+    # --- Image uploader/text description box
+    radio_button_input = st.sidebar.radio("Would you like to search with an image or a textual description?", ["Image upload", "Text description"])
+    # URL, upload file (max 200 mb)
+    if radio_button_input == "Image upload":
+        uploaded_file = st.sidebar.file_uploader("Upload an image of what you're trying to find", type=["png", "jpg", "jpeg", "txt", "csv", "pdf", "docx", "xlsx"])
+        if uploaded_file is not None:
+            # Specify the directory where the file will be saved
+            save_directory = "SkySearch_UAV/.config/git/ignore/data/uploaded_data/"
 
-        # Save the uploaded file
-        file_path = save_uploaded_file(uploaded_file, save_directory)
+            # Save the uploaded file
+            file_path = save_uploaded_file(uploaded_file, save_directory)
 
-        st.success(f"File '{uploaded_file.name}' saved to '{file_path}'")
+            st.success(f"File '{uploaded_file.name}' saved to '{file_path}'")
+
+    # Input for textual description of what you're trying to find
+    if radio_button_input == "Text description":
+        user_text = st.sidebar.text_area("Enter your text here", height=200)
+
+        # Add a submit button to trigger the processing of the entered text
+        submit_button = st.sidebar.button("Submit")
+
+        if submit_button:
+            if user_text:
+                st.sidebar.write("You entered the following text:")
+                st.sidebar.write(user_text)
+            else:
+                st.sidebar.warning("Please enter some text before submitting")
 
 
 # Run the Streamlit app
