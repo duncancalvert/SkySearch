@@ -7,6 +7,7 @@ from PIL import Image
 import os
 import shutil
 import torch
+import yaml
 
 
 # --- How to interact with this application in the terminal:
@@ -34,6 +35,17 @@ def centered_title(title):
         unsafe_allow_html=True,
     )
 
+
+divider_css = """
+<style>
+.divider {
+    height: 1px;
+    width: 100%;
+    background-color: #ddd;
+    margin: 20px 0;
+}
+</style>
+"""
 
 def save_uploaded_file(uploaded_file, save_directory):
     """
@@ -85,12 +97,19 @@ def main():
             sendback_audio=False
         )
         st.sidebar.title('Settings')
-        st.subheader('Speech-to-Text Commands')
-
-
 
     with col2:
         st.subheader('Map')
+
+    # Add a divider to the page
+    st.markdown(divider_css, unsafe_allow_html=True)
+    st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
+
+    # Create two new columns below the divider
+    col3, col4 = st.columns(2)
+
+    with col3:
+        st.subheader('Speech-to-Text Commands')
 
     # --- Buttons
     st.sidebar.header('Commands')
@@ -103,9 +122,12 @@ def main():
     facial_rec_slider = st.sidebar.slider('Confidence Threshold ', 0, 100, 25)
 
     # --- CoCo names selection
-    option = st.sidebar.multiselect(
-        'What would you like to find?',
-        ('Blue', 'Red', 'Green'))
+    with open("/Users/attis/PycharmProjects/SkySearch_UAV/SkySearch_UAV/ultralytics/ultralytics/cfg/datasets/coco8.yaml", "r") as file:
+        coco_data = yaml.safe_load(file)
+
+    # Grab all Coco Names from the YaML file
+    coco_classes = coco_data.get('names')
+    select_classes = st.sidebar.multiselect("Select COCO Classes for Analysis", coco_classes)
 
     # --- Image uploader/text description box
     radio_button_input = st.sidebar.radio("Would you like to search with an image or a textual description?", ["Image upload", "Text description"])
