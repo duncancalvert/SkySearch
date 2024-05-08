@@ -111,22 +111,37 @@ def main():
     with col3:
         st.subheader('Speech-to-Text Commands')
 
-    # --- Buttons
-    st.sidebar.header('Commands')
-    take_off_button = st.sidebar.button("Take Off")
-    flip_button = st.sidebar.button("Flip")
-    circle_button = st.sidebar.button("Circle")
+    with col4:
+        st.subheader('Commands')
+        # --- Buttons
+        col5, col6, col7, col8 = st.columns(4)
+        with col5:
+            take_off_button = st.button("Take Off")
+        with col6:
+            flip_button = st.button("Land")
+        with col7:
+            circle_button = st.button("Flip")
+        with col8:
+            circle_button = st.button("Circle")
+
+
 
     # --- Facial recognition accuracy slider
     st.sidebar.header('Optimizers')
     facial_rec_slider = st.sidebar.slider('Confidence Threshold ', 0, 100, 25)
 
-    # --- CoCo names selection
-    with open("/Users/attis/PycharmProjects/SkySearch_UAV/SkySearch_UAV/ultralytics/ultralytics/cfg/datasets/coco8.yaml", "r") as file:
-        coco_data = yaml.safe_load(file)
-
-    # Grab all Coco Names from the YaML file
-    coco_classes = coco_data.get('names')
+    # Display CoCo names in a selector
+    coco_classes = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train",
+                    "truck", "boat", "traffic light", "fire hydrant", "stop sign", "parking meter",
+                    "bench", "bird", "cat", "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra",
+                    "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee", "skis",
+                    "snowboard", "sports ball", "kite", "baseball bat", "baseball glove", "skateboard",
+                    "surfboard", "tennis racket", "bottle", "wine glass", "cup", "fork", "knife", "spoon",
+                    "bowl", "banana", "apple", "sandwich", "orange", "broccoli", "carrot", "hot dog", "pizza",
+                    "donut", "cake", "chair", "sofa", "pottedplant", "bed", "diningtable", "toilet", "tvmonitor",
+                    "laptop", "mouse", "remote", "keyboard", "cell phone", "microwave", "oven", "toaster",
+                    "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear", "hair drier",
+                    "toothbrush"]
     select_classes = st.sidebar.multiselect("Select COCO Classes for Analysis", coco_classes)
 
     # --- Image uploader/text description box
