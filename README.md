@@ -1,6 +1,6 @@
 <picture align="left">
-  <source media="(prefers-color-scheme: dark)" srcset="SkySearch_UAV/media/images/SkySearch_Logos/SkySearchLogo5_WithText.png">
-  <img alt="SkySearch Logo" src="SkySearch_UAV/media/images/SkySearch_Logos/SkySearchLogo5_WithText.png">
+  <source media="(prefers-color-scheme: dark)" srcset="media/images/SkySearch_Logos/SkySearchLogo5_WithText.png">
+  <img alt="SkySearch Logo" src="media/images/SkySearch_Logos/SkySearchLogo5_WithText.png">
 </picture>
 
 -------------
