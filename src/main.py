@@ -7,7 +7,7 @@ import threading
 
 
 # take off
-manual_pilot_mode.Tello_Connect()
+manual_pilot_mode.tello_connect()
 # manually pilot
 manual_pilot_mode.get_keyboard_input()
 
