@@ -8,7 +8,7 @@ import os
 import shutil
 import torch
 import yaml
-from src.utils import streamlit_html_helper
+from utils import streamlit_html_helper
 
 
 # --- How to interact with this application in the terminal:
@@ -16,29 +16,6 @@ from src.utils import streamlit_html_helper
 # End: ctrl + d
 
 st.set_page_config(layout="wide")
-
-
-def save_uploaded_file(uploaded_file, save_directory):
-    """
-    Save an uploaded file to a specified directory.
-
-    Parameters:
-    - uploaded_file: The uploaded file from Streamlit's file uploader.
-    - save_directory: The directory where the file will be saved.
-    :return: file path of saved file upload
-    """
-    # Check if the directory exists, if not, create it
-    if not os.path.exists(save_directory):
-        os.makedirs(save_directory)
-
-    # Create the file path where the file will be saved
-    file_path = os.path.join(save_directory, uploaded_file.name)
-
-    # Save the file
-    with open(file_path, "wb") as f:
-        shutil.copyfileobj(uploaded_file, f)
-
-    return file_path
 
 
 def load_model(path, device):
@@ -74,7 +51,7 @@ def main():
 
     # Add a divider to the page
 
-    # streamlit_html_helper.html_divider()
+    streamlit_html_helper.html_divider()
     st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
 
     # Create two new columns below the divider
@@ -124,7 +101,7 @@ def main():
             save_directory = ".config/git/ignore/data/uploaded_data"
 
             # Save the uploaded file
-            file_path = save_uploaded_file(uploaded_file, save_directory)
+            file_path = streamlit_html_helper.save_uploaded_file(uploaded_file, save_directory)
 
             st.success(f"File '{uploaded_file.name}' saved to '{file_path}'")
 
