@@ -8,44 +8,15 @@ import os
 import shutil
 import torch
 import yaml
+from src.utils import streamlit_html_helper
 
 
 # --- How to interact with this application in the terminal:
 # Start: streamlit run .../streamlit_app.py
 # End: ctrl + d
 
-
 st.set_page_config(layout="wide")
 
-
-# Define a function to center the title
-def centered_title(title):
-    # Use custom CSS to center the title
-    st.markdown(
-        f"""
-        <style>
-        .centered-title {{
-            text-align: center;
-            font-size: 3em;
-            font-weight: bold;
-        }}
-        </style>
-        <div class="centered-title">{title}</div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
-divider_css = """
-<style>
-.divider {
-    height: 1px;
-    width: 100%;
-    background-color: #ddd;
-    margin: 20px 0;
-}
-</style>
-"""
 
 def save_uploaded_file(uploaded_file, save_directory):
     """
@@ -79,12 +50,12 @@ def load_model(path, device):
 
 def main():
     """
-    Main page UI with calls to other subfunctions
+    Main page UI with calls to other sub-functions
     :return: page UI displayed on web browser
     """
 
     # --- Page Title
-    centered_title("SkySearch Ground Control")
+    streamlit_html_helper.centered_title("SkySearch Ground Control")
 
     # Create two equal sized columns
     col1, col2 = st.columns(2)
@@ -102,7 +73,8 @@ def main():
         st.subheader('Map')
 
     # Add a divider to the page
-    st.markdown(divider_css, unsafe_allow_html=True)
+
+    # streamlit_html_helper.html_divider()
     st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
 
     # Create two new columns below the divider
@@ -123,8 +95,6 @@ def main():
             circle_button = st.button("Flip")
         with col8:
             circle_button = st.button("Circle")
-
-
 
     # --- Facial recognition accuracy slider
     st.sidebar.header('Optimizers')
@@ -151,7 +121,7 @@ def main():
         uploaded_file = st.sidebar.file_uploader("Upload an image of what you're trying to find", type=["png", "jpg", "jpeg", "txt", "csv", "pdf", "docx", "xlsx"])
         if uploaded_file is not None:
             # Specify the directory where the file will be saved
-            save_directory = "SkySearch_UAV/.config/git/ignore/data/uploaded_data/"
+            save_directory = ".config/git/ignore/data/uploaded_data"
 
             # Save the uploaded file
             file_path = save_uploaded_file(uploaded_file, save_directory)
