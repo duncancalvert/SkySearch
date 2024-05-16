@@ -13,7 +13,7 @@ drone = Tello()
 drone.connect()
 
 # Connect to your home WiFi
-drone.connect_to_wifi("Hythladeas", "dispenserofnonsense")
+drone.connect_to_wifi("drone", "Apple123!")
 
 # reboot the drone
 drone.reboot()
