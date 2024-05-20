@@ -24,7 +24,7 @@ djitellopy_logger.setLevel(logging.CRITICAL)
 libav_logger = logging.getLogger('libav')
 libav_logger.setLevel(logging.CRITICAL)
 
-
+show_image = False
 
 # Initialize and connect the Tello drone
 # tello = Tello('192.168.87.23')  # <- ZF
@@ -43,12 +43,12 @@ model.conf = .2
 
 # Define the target object type to track, we can use a list of objects or a single object. 
 # This is because some objects are similar, YOLO had a hard time distinguishing a cup from a bottle
-TARGET_OBJECT = ['cup', 'bowl', 'bottle']
-# TARGET_OBJECT = "person"
+# TARGET_OBJECT = ['cup', 'bowl', 'bottle']
+TARGET_OBJECT = "person"
 
 
 # Constants for drone control based on the object's size and center position
-OBJECT_TARGET_COVERAGE = .01  # This constant is used to determine what % of the camera the object should take up.
+OBJECT_TARGET_COVERAGE = .3  # This constant is used to determine what % of the camera the object should take up.
 # This is for distance control
 # For smaller objects this value should be lower. For bigger objects it should be higher. For a persion it can be about .3. For a cup it can be .01.
 
@@ -57,7 +57,7 @@ frame = tello.get_frame_read().frame
 OBJECT_CENTER_TOLERANCE = 50  # Pixel tolerance for centering
 FRAME_CENTER = (frame.shape[1] // 2, frame.shape[0] // 2)
 # Calculate total camera area for distance calculation
-TOTAL_CAMERA_AREA = frame.shape[1] * frame.shape[0]
+TOTAL_CAMERA_AREA = None
 
 object_last_position = "right"
 
@@ -86,7 +86,9 @@ while True:
     elif isinstance(TARGET_OBJECT, list):
         target_detections = detections[detections['name'].isin(TARGET_OBJECT)]
     
-
+    # If we have not yet aquired the area, aquire it
+    if TOTAL_CAMERA_AREA is None:
+        TOTAL_CAMERA_AREA = frame.shape[1] * frame.shape[0]
 
     if target_detections.empty: # No detections found, so do some default idle behavior
         
@@ -125,7 +127,7 @@ while True:
             
         logging.info(f"Object last seen {object_last_position} because the center of the object was {object_x_center.item()} and our frame center was {FRAME_CENTER[0]}")        
 
-        logging.info(f"{TARGET_OBJECT} detected at ({object_x_center.item()}, {object_y_center.item()})\nOn the {object_last_position} side: Object center={object_x_center.item()} : Frame center{FRAME_CENTER[0]} \nIt had area {round(object_area.item(), 0)}/ {TOTAL_CAMERA_AREA}={round(object_area.item() / TOTAL_CAMERA_AREA,2)}")
+        logging.info(f"{TARGET_OBJECT} detected at ({object_x_center.item()}, {object_y_center.item()})\nOn the {object_last_position} side: Object center={object_x_center.item()} : Frame center = {FRAME_CENTER[0]} \nIt had area {round(object_area.item(), 0)}/ {TOTAL_CAMERA_AREA} = {round(object_area.item() / TOTAL_CAMERA_AREA,2)}")
 
         # If the object doesn't take up enough of the camera, move forward
         if target_object_coverage < OBJECT_TARGET_COVERAGE:
@@ -162,10 +164,10 @@ while True:
             except TelloException:
                 logging.info("Downward movement likely blocked")
         
-
-    rendered_frame = results.render()[0]
-    rendered_frame_bgr = cv2.cvtColor(rendered_frame, cv2.COLOR_RGB2BGR)
-    cv2.imshow('YOLOv5 Tello Detection', rendered_frame_bgr)
+    if show_image:
+        rendered_frame = results.render()[0]
+        rendered_frame_bgr = cv2.cvtColor(rendered_frame, cv2.COLOR_RGB2BGR)
+        cv2.imshow('YOLOv5 Tello Detection', rendered_frame_bgr)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
