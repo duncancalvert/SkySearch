@@ -24,7 +24,7 @@ djitellopy_logger.setLevel(logging.CRITICAL)
 libav_logger = logging.getLogger('libav')
 libav_logger.setLevel(logging.CRITICAL)
 
-show_image = False
+show_image = True
 
 # Initialize and connect the Tello drone
 # tello = Tello('192.168.87.23')  # <- ZF
@@ -76,6 +76,14 @@ while True:
 
     frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = model(frame_rgb)
+    
+    if show_image:
+        rendered_frame = results.render()[0]
+        rendered_frame_bgr = cv2.cvtColor(rendered_frame, cv2.COLOR_RGB2BGR)
+        cv2.imshow('YOLOv5 Tello Detection', rendered_frame_bgr)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
     # Filter detections for the target object
     detections = results.pandas().xyxy[0]
@@ -164,13 +172,7 @@ while True:
             except TelloException:
                 logging.info("Downward movement likely blocked")
         
-    if show_image:
-        rendered_frame = results.render()[0]
-        rendered_frame_bgr = cv2.cvtColor(rendered_frame, cv2.COLOR_RGB2BGR)
-        cv2.imshow('YOLOv5 Tello Detection', rendered_frame_bgr)
-
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+    
 
 # Cleanup
 tello.streamoff()
