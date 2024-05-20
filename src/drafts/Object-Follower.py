@@ -55,9 +55,9 @@ OBJECT_TARGET_COVERAGE = .3  # This constant is used to determine what % of the 
 frame = tello.get_frame_read().frame
 
 OBJECT_CENTER_TOLERANCE = 50  # Pixel tolerance for centering
-FRAME_CENTER = (frame.shape[1] // 2, frame.shape[0] // 2)
 # Calculate total camera area for distance calculation
 TOTAL_CAMERA_AREA = None
+FRAME_CENTER = None
 
 object_last_position = "right"
 
@@ -95,16 +95,19 @@ while True:
         target_detections = detections[detections['name'].isin(TARGET_OBJECT)]
     
     # If we have not yet aquired the area, aquire it
-    if TOTAL_CAMERA_AREA is None:
+    # We need to do this within the loop because the frame size can change
+    if TOTAL_CAMERA_AREA is None or FRAME_CENTER is None:
         TOTAL_CAMERA_AREA = frame.shape[1] * frame.shape[0]
+        FRAME_CENTER = (frame.shape[1] // 2, frame.shape[0] // 2)
+
 
     if target_detections.empty: # No detections found, so do some default idle behavior
         
         # Rotate around depending on where the object was last seen
         if object_last_position == "left":
-            tello.rotate_counter_clockwise(15)
+            tello.rotate_counter_clockwise(10)
         else:
-            tello.rotate_clockwise(15)
+            tello.rotate_clockwise(10)
         
         logging.info(f"Object last detected {object_last_position} turning {object_last_position}")        
 
@@ -126,6 +129,33 @@ while True:
                          (target_detection['ymin'] + target_detection['ymax']) / 2)
         
         target_object_coverage = object_area.item() / TOTAL_CAMERA_AREA
+        
+        # Center the object in the frame within some tolerance
+        if object_x_center.item() < FRAME_CENTER[0] - OBJECT_CENTER_TOLERANCE:
+            tello.rotate_counter_clockwise(15)
+            logging.info("Rotating counter clockwise to center the object")
+        elif object_x_center.item() > FRAME_CENTER[0] + OBJECT_CENTER_TOLERANCE:
+            tello.rotate_clockwise(15)
+            logging.info("Rotating clockwise to center the object")
+        
+        else:
+            logging.info("X direction is in the sweetspot")
+
+        if object_y_center.item() < FRAME_CENTER[1] - OBJECT_CENTER_TOLERANCE:
+            tello.move_up(20)
+            logging.info("Moving up to center the object")
+        elif object_y_center.item() > FRAME_CENTER[1] + OBJECT_CENTER_TOLERANCE:
+            
+            # This is in a try-catch block because sometimes the drone can't move down because it's too close to the ground
+            try: 
+                tello.move_down(20)
+                logging.info("Moving down to center the object")
+
+            except TelloException:
+                logging.info("Downward movement likely blocked")
+                
+        else:
+            logging.info("Y Direction is in the sweetspot")
         
         # Let's give our drone some memory to tell where the object last was. On it's right side of vision or left side?
         if object_x_center.item() < FRAME_CENTER[0]:
@@ -150,29 +180,6 @@ while True:
         # If the object is in the sweetspot, log it
         else:
             logging.info(f"Target object in the sweetspot: {OBJECT_TARGET_COVERAGE} < {target_object_coverage} < {round(1.3 * OBJECT_TARGET_COVERAGE, 2)}")
-
-        # Center the object in the frame within some tolerance
-        if object_x_center.item() < FRAME_CENTER[0] - OBJECT_CENTER_TOLERANCE:
-            tello.rotate_counter_clockwise(20)
-            logging.info("Rotating counter clockwise to center the object")
-        elif object_x_center.item() > FRAME_CENTER[0] + OBJECT_CENTER_TOLERANCE:
-            tello.rotate_clockwise(20)
-            logging.info("Rotating clockwise to center the object")
-
-        if object_y_center.item() < FRAME_CENTER[1] - OBJECT_CENTER_TOLERANCE:
-            tello.move_up(20)
-            logging.info("Moving up to center the object")
-        elif object_y_center.item() > FRAME_CENTER[1] + OBJECT_CENTER_TOLERANCE:
-            
-            # This is in a try-catch block because sometimes the drone can't move down because it's too close to the ground
-            try: 
-                tello.move_down(20)
-                logging.info("Moving down to center the object")
-
-            except TelloException:
-                logging.info("Downward movement likely blocked")
-        
-    
 
 # Cleanup
 tello.streamoff()
