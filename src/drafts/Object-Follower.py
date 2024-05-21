@@ -27,7 +27,7 @@ libav_logger.setLevel(logging.CRITICAL)
 show_image = True
 
 # Initialize and connect the Tello drone
-# tello = Tello('192.168.87.23')  # <- ZF
+# tello = Tello('192.168.87.22')  # <- ZF
 # tello = Tello('192.168.87.24')  # <- DC
 tello = Tello() # <- Local
 tello.connect()
@@ -154,7 +154,7 @@ while True:
             except TelloException:
                 logging.info("Downward movement likely blocked")
                 
-        else:
+        else:   
             logging.info("Y Direction is in the sweetspot")
         
         # Let's give our drone some memory to tell where the object last was. On it's right side of vision or left side?
