@@ -28,14 +28,9 @@ UChicago Robotics Capstone 2024
 
 ## Main Features
 
-#### Ground Control Station (GCS)
-* The GCS serves as the central hub for mission planning, monitoring, and flight control. It includes a user-friendly interface for defining search areas, setting flight parameters, and receiving real-time updates from the drone swarm.
-
-#### Drone Swarm
-* The swarm comprises of multiple UAVs equipped with high-resolution cameras, GPS, and onboard processing units. The drones communicate with each other and the GCS to coordinate their search patterns and share information.
-
-#### Image Recognition/Text-to-Image Matching
-* This module is responsible for generating images based on a textual description of the missing person or accepting uploaded photos. The module then compares these reference images against the real-time drone video feeds. Advanced computer vision techniques, such as convolutional neural networks (CNNs), YOLO, and FaceNet are employed for face detection and recognition. 
+* <ins>Ground Control Station (GCS)</ins>: The GCS serves as the central hub for mission planning, monitoring, and flight control. It includes a user-friendly interface for defining search areas, setting flight parameters, and receiving real-time updates from the drone swarm.
+* <ins>Drone Swarm</ins>: The swarm comprises of multiple UAVs equipped with high-resolution cameras, GPS, and onboard processing units. The drones communicate with each other and the GCS to coordinate their search patterns and share information.
+* <ins>Image Recognition/Text-to-Image Matching</ins>: This module is responsible for generating images based on a textual description of the missing person or accepting uploaded photos. The module then compares these reference images against the real-time drone video feeds. Advanced computer vision techniques, such as convolutional neural networks (CNNs), YOLO, and FaceNet are employed for face detection and recognition. 
 
 ## Where to get it
 
