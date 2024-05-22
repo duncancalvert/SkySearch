@@ -43,11 +43,9 @@ UChicago Robotics Capstone 2024
 
 Check back soon! SkySearch will be made available to PyPI and Streamlit Cloud in the next few months.
 
-## Dependencies
+## License
 
-
-
-## Installation from sources
+SkySearch is published under the [MIT License]|[https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE]
 
 
 
