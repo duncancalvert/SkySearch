@@ -33,11 +33,14 @@ UChicago Robotics Capstone 2024
 
 ## Main Features
 
-#### Ground Control Station
+#### Ground Control Station (GCS)
+The GCS serves as the central hub for mission planning, monitoring, and flight control. It includes a user-friendly interface for defining search areas, setting flight parameters, and receiving real-time updates from the drone swarm.
 
 #### Drone Swarm
+The swarm comprises of multiple UAVs equipped with high-resolution cameras, GPS, and onboard processing units. The drones communicate with each other and the GCS to coordinate their search patterns and share information.
 
 #### Image Recognition/Text-to-Image Matching
+This module is responsible for generating images based on a textual description of the missing person or accepting uploaded photos. The module then compares these reference images against the real-time drone video feeds. Advanced computer vision techniques, such as convolutional neural networks (CNNs), YOLO, and FaceNet are employed for face detection and recognition. 
 
 ## Where to get it
 
@@ -45,7 +48,7 @@ Check back soon! SkySearch will be made available to PyPI and Streamlit Cloud in
 
 ## License
 
-SkySearch is published under the [MIT License]|[https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE]
+SkySearch is published under the [MIT License](https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE)
 
 
 
