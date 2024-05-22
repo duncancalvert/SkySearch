@@ -41,7 +41,11 @@ UChicago Robotics Capstone 2024
 
 ## Where to get it
 
+Check back soon! SkySearch will be made available to PyPI and Streamlit Cloud in the next few months.
+
 ## Dependencies
+
+
 
 ## Installation from sources
 
