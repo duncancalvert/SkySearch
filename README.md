@@ -33,6 +33,12 @@ UChicago Robotics Capstone 2024
 
 ## Main Features
 
+#### Ground Control Station
+
+#### Drone Swarm
+
+#### Image Recognition/Text-to-Image Matching
+
 ## Where to get it
 
 ## Dependencies
