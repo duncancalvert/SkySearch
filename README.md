@@ -23,13 +23,8 @@ UChicago Robotics Capstone 2024
 
 - [Main Features](#main-features)
 - [Where to get it](#where-to-get-it)
-- [Dependencies](#dependencies)
-- [Installation from sources](#installation-from-sources)
 - [License](#license)
-- [Documentation](#documentation)
-- [Background](#background)
-- [Getting Help](#getting-help)
-- [Discussion and Development](#discussion-and-development)
+- [Documentation and User Guide](#documentation)
 
 ## Main Features
 
@@ -44,11 +39,16 @@ This module is responsible for generating images based on a textual description 
 
 ## Where to get it
 
-Check back soon! SkySearch will be made available to PyPI and Streamlit Cloud in the next few months.
+Check back soon! SkySearch will be made available via PyPI and Streamlit Cloud in the next few months.
 
 ## License
 
 SkySearch is published under the [MIT License](https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE)
 
+## Documentation
+
+The SkySearch UI is meant to be a simple and intutitve experience for users of all skill levels. 
+* Users can cycle through the various drone swarm functions via the Settings menu on the left.
+* To connect a drone, please follow the steps outlined in the Drone on Private python file
 
 
