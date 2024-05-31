@@ -5,7 +5,7 @@
 
 -------------
 # SkySearch: Missing Person Identification Using Aerial Drone Sensing
-UChicago Robotics Capstone 2024
+UChicago Robotics Capstone December 2024
 
 | | |
 | --- | --- |
