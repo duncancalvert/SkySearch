@@ -105,6 +105,7 @@ class UAV(djitellopy.Tello):
 
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
         message = f"Flight {self.current_UUID} concluded at {current_time}. Reason: {reason}"
+        logging.info(message)
 
         self.send_control_command("land")
         self.is_flying = False
