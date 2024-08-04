@@ -37,6 +37,10 @@ class UAV(djitellopy.Tello):
 
         self.TAKEOFF_TIMEOUT
         self.is_flying = False
+        self.x = 0
+        self.y = 0
+        self.rotation = 0 # in degrees
+        self.height = 100 # in cm
 
     def move(self, direction: str, x:int, reason:Maybe[str] = None):
         """Overwrite the move method. Now let's modify stuff """
