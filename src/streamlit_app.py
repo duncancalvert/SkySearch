@@ -1,6 +1,6 @@
 import cv2
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, VideoHTMLAttributes
+# from streamlit_webrtc import webrtc_streamer
 import numpy as np
 import av
 from PIL import Image
@@ -34,39 +34,6 @@ def tello_connect():
     print(tello.get_battery())
     tello.streamon()
     return tello, tello_ip
-
-
-LOG_BLACKLIST = [
-    "ERROR:libav.h264:non-existing PPS 0 referenced",
-    "ERROR:libav.h264:decode_slice_header error",
-    "ERROR:libav.h264:no frame!",
-    "INFO:djitellopy:Response streamon: 'ok'",
-    "INFO:djitellopy:Send command: 'streamon'",
-    "INFO:djitellopy:Tello instance was initialized. Host: '192.168.87.24'. Port: '8889'.",
-    "INFO:djitellopy:Send command: 'cw 15'",
-    "INFO:djitellopy:Response cw 15: 'ok'",
-    "INFO:djitellopy:Send command: 'flip f'"
-]
-
-# Initialize logging
-logging.basicConfig(filename='drone.log', level=logging.INFO)
-
-
-class BlacklistFilter(logging.Filter):
-    def __init__(self, blacklist):
-        super().__init__()
-        self.blacklist = blacklist
-
-    def filter(self, record):
-        return not any(message in record.getMessage() for message in self.blacklist)
-
-
-# Remove blacklisted log messages
-logger = logging.getLogger()
-for message in LOG_BLACKLIST:
-    # Add a filter to remove all occurrences of the blacklisted message
-    logger.addFilter(BlacklistFilter([message]))
-
 
 def main():
     # Initialize the ground control app

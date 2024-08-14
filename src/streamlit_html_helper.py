@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 import shutil
-from streamlit_webrtc import webrtc_streamer, VideoHTMLAttributes
+# from streamlit_webrtc import webrtc_streamer
 
 
 # Define a function to center the title
@@ -85,7 +85,7 @@ def ground_control():
     # --- Turn on the webcam
     with col1:
         st.subheader('Drone camera feed')
-        webrtc_streamer(
+        webrtc_streamer( # <- PROBLEM
             key="streamer",
             sendback_audio=False
         )

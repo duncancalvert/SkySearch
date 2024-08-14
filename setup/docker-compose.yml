@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/usr/src/SkySearch_AUV  # Adjust the path as needed
+    network_mode: "host"
+    environment:
+      - ENV=development
+    command: bash -c "while true; do sleep 1; done"  # Keep the container running for development
