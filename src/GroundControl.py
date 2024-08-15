@@ -69,6 +69,8 @@ class GroundControl(object):
         command_thread = threading.Thread(target=command, args=params)
         command_thread.start()
         
+    
+        
         
         
 if __name__ == "__main__":

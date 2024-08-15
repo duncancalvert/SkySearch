@@ -6,4 +6,5 @@ def load_model():
     print("model to ", model_)
     return model_
 
-load_model()
+if __name__ == "__main__":
+    load_model()
