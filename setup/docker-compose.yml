@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ../:/usr/src/SkySearch_AUV  # Adjust the path as needed
+      - ../:/usr/src/SkySearch_UAV  # Adjust the path as needed
     network_mode: "host"
     environment:
       - ENV=development
