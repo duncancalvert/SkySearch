@@ -69,9 +69,14 @@ class GroundControl(object):
         command_thread = threading.Thread(target=command, args=params)
         command_thread.start()
         
+    # Check queue
     
-        
-        
+    # {r, l, f , b, takeoff,lang}
+    
+    # publish action with keys
+    
+    # start_flight: Check queue every roughly 1/10 secs
+    
         
 if __name__ == "__main__":
     pass

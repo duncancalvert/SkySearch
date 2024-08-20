@@ -30,10 +30,16 @@ rotation_dictionary = {
     'ccw': 'counter-clockwise'
 }
 
+# Random Misc. information necessary for the Tello parent class to function
+TELLO_IP = '192.168.10.1'
+RETRY_COUNT = 3
+VS_UDP_PORT = 11111
+
 class UAV(djitellopy.Tello):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, host=TELLO_IP, retry_count=RETRY_COUNT, vs_udp=VS_UDP_PORT, custom_param=None):
+        # Call the parent class's __init__ to retain the existing logic
+        super().__init__(host, retry_count, vs_udp)
 
         self.TAKEOFF_TIMEOUT
         self.is_flying = False
