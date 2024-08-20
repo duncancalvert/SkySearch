@@ -6,3 +6,5 @@ streamlit-webrtc>=0.47
 opencv-python>=4.9
 torch
 PyYAML
+returns
+djitellopy
