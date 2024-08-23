@@ -10,3 +10,4 @@ returns
 djitellopy
 keyboard
 mediapipe
+pynput
