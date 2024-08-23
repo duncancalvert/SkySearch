@@ -8,3 +8,5 @@ torch
 PyYAML
 returns
 djitellopy
+keyboard
+mediapipe
