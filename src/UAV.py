@@ -56,7 +56,7 @@ class UAV(djitellopy.Tello):
         message = f"Moving {direction_str} by {x} cm. Reason: {reason}"
         logger.info(message)
 
-        self.send_control_command("{} {}".format(direction, x))
+        self.send_control_command("{} {}".format(direction_str, x))
 
 
     def rotate_clockwise(self, x: int, reason:Maybe[str] = None):
@@ -94,7 +94,7 @@ class UAV(djitellopy.Tello):
 
         self.send_control_command("flip {}".format(direction))
 
-    def takeoff(self, reason:Maybe[str] = None):
+    def takeoff(self, reason: str = None):
         """Automatic takeoff.
         """
         # Something it takes a looooot of time to take off and return a succesful takeoff.
