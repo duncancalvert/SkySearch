@@ -98,6 +98,9 @@ class GroundControl(object):
         while True:
             # Check if there is anything in the queue, if there is perform the action
             if len(self.command_queue) > 0:
+                
+                print(self.command_queue)
+                
                 command = self.command_queue.popleft()
                 direction, x = command.split(" ")
                 x = int(x)
