@@ -8,12 +8,15 @@ from djitellopy import Tello
     5. Copy your IP address and put it in your code
 """
 
+wifi_name = "OUR2.4"
+wifi_password = "ZachAlex12"
+
 # Connect to the drone
 drone = Tello()
 drone.connect()
 
 # Connect to your home WiFi
-drone.connect_to_wifi("drone", "Apple123!")
+drone.connect_to_wifi(wifi_name,wifi_password)
 
 # reboot the drone
 drone.reboot()

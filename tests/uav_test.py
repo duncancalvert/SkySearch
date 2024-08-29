@@ -10,7 +10,7 @@ def main():
 
 
     # All starting inforation
-    drone_ip = None
+    drone_ip = "10.0.0.178"
 
     if drone_ip is None:
         uav = UAV()

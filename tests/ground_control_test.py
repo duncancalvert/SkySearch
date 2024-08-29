@@ -13,7 +13,7 @@ from src.UAV import UAV
 def main():
     print("main started")
     # All starting inforation
-    drone_ip = None
+    drone_ip = "10.0.0.178"
 
     if drone_ip is None:
         uav = UAV()
@@ -26,8 +26,6 @@ def main():
     print(battery)
     
     gc = GroundControl(uav)
-    
-    gc.takeoff_uav()
     
     gc.idle()    
     

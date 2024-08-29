@@ -47,6 +47,7 @@ class UAV(djitellopy.Tello):
         self.y = 0
         self.rotation = 0 # in degrees
         self.height = 100 # in cm
+        self.is_moving = False
 
     def move(self, direction: str, x:int, reason:Maybe[str] = None):
         """Overwrite the move method. Now let's modify stuff """
@@ -56,7 +57,9 @@ class UAV(djitellopy.Tello):
         message = f"Moving {direction_str} by {x} cm. Reason: {reason}"
         logger.info(message)
 
+        self.is_moving = True
         self.send_control_command("{} {}".format(direction_str, x))
+        self.is_moving = False
 
 
     def rotate_clockwise(self, x: int, reason:Maybe[str] = None):
@@ -66,8 +69,9 @@ class UAV(djitellopy.Tello):
         """
 
         message = f"Rotating clockwise by {x} degrees. Reason: {reason}"
-
+        self.is_moving = True
         self.send_control_command("cw {}".format(x))
+        self.is_moving = False
         logger.info(message)
 
     def rotate_counter_clockwise(self, x: int, reason:Maybe[str] = None):
@@ -78,8 +82,9 @@ class UAV(djitellopy.Tello):
 
         message = f"Rotating counter-clockwise by {x} degrees. Reason: {reason}"
         logger.info(message)
-
+        self.is_moving = True
         self.send_control_command("ccw {}".format(x))
+        self.is_moving = False
 
     def flip(self, direction: str, reason:Maybe[str] = None):
         """Do a flip maneuver.
@@ -91,8 +96,9 @@ class UAV(djitellopy.Tello):
         direction_str = movement_dict[direction]
         message = f"Moving {direction_str}. Reason: {reason}"
         logger.info(message)
-
+        self.is_moving = True
         self.send_control_command("flip {}".format(direction))
+        self.is_moving = False
 
     def takeoff(self, reason: str = None):
         """Automatic takeoff.
@@ -105,8 +111,9 @@ class UAV(djitellopy.Tello):
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
         message = f"Flight initiated at {current_time} with ID: {flight_uuid}. Reason: {reason}"
         logging.info(message)
-
+        self.is_moving = True
         self.send_control_command("takeoff", timeout=self.TAKEOFF_TIMEOUT)
+        self.is_moving = False
         self.is_flying = True
 
     def land(self, reason:Maybe[str] = None):
@@ -117,7 +124,10 @@ class UAV(djitellopy.Tello):
         message = f"Flight {self.current_UUID} concluded at {current_time}. Reason: {reason}"
         logging.info(message)
 
+        self.is_moving = True
         self.send_control_command("land")
+        self.is_moving = False
+
         self.is_flying = False
 
     # Option to overwrite these functions:

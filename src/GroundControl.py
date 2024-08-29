@@ -43,7 +43,9 @@ class GroundControl(object):
         command = self.UAV.move
         params = [direction, x, reason]
         command_thread = threading.Thread(target=command, args=params)
+        start_time = time.time()
         command_thread.start()
+        execution_time = time.time() - start_time
 
     def rotate_uav_clockwise(self, x: int, reason: str):
         command = self.UAV.rotate_clockwise
@@ -78,33 +80,70 @@ class GroundControl(object):
     # Check queue
     def idle(self):
         
+        key_command_map = {
+    'w': "f 40",       # Move forward
+    'a': "l 40",       # Move left
+    's': "b 40",       # Move backward
+    'd': "r 40",       # Move right
+    'q': "ccw 45",     # Rotate counter-clockwise
+    'e': "cw 45",      # Rotate clockwise
+    't': "takeoff",    # Takeoff
+    'l': "land",       # Land
+    'i': "flip f",     # Flip forward
+    'j': "flip l",     # Flip left
+    'k': "flip b",     # Flip backward
+    'm': "flip r",      # Flip right
+    'u': "up 40",
+    'o': "down 40"
+}
+
         def on_press(key):
             try:
                 with self.queue_lock:
-                    if key.char == 'w':
-                        self.command_queue.append("f 40")
-                    elif key.char == 'a':
-                        self.command_queue.append("l 40")
-                    elif key.char == 's':
-                        self.command_queue.append("b 40")
-                    elif key.char == 'd':
-                        self.command_queue.append("r 40")
+                    if key.char in key_command_map:
+                        self.command_queue.append(key_command_map[key.char])
             except AttributeError:
                 pass
-        
+
         listener = keyboard.Listener(on_press=on_press)
         listener.start()
         
         while True:
-            # Check if there is anything in the queue, if there is perform the action
             if len(self.command_queue) > 0:
+
+                if not self.UAV.is_moving:
+
+                    command = self.command_queue.popleft()
+                    action = command.split(" ")[0]
+                    
+                    if action in ['f', 'b', 'l', 'r']:  # Movement commands
+                        direction, x = command.split(" ")
+                        x = int(x)
+                        self.move_uav(direction=direction, x=x, reason="Key pressed")
+                    elif action in ['cw', 'ccw']:  # Rotation commands
+                        direction, x = command.split(" ")
+                        x = int(x)
+                        if action == 'cw':
+                            self.rotate_uav_clockwise(x, reason="Key pressed")
+                        else:
+                            self.rotate_uav_counter_clockwise(x, reason="Key pressed")
+                    elif action == 'flip':  # Flip commands
+                        direction = command.split(" ")[1]
+                        self.flip_uav(direction=direction, reason="Key pressed")
+                    elif action in ['up', 'down']:  # Vertical movement commands
+                        direction, x = command.split(" ")
+                        x = int(x)
+                        if action == 'up':
+                            self.move_uav(direction='u', x=x, reason="Key pressed")
+                        else:
+                            self.move_uav(direction='d', x=x, reason="Key pressed")
+                    elif action == 'takeoff':
+                        self.takeoff_uav(reason="Key pressed")
+                    elif action == 'land':
+                        self.land_uav(reason="Key pressed")
                 
-                print(self.command_queue)
-                
-                command = self.command_queue.popleft()
-                direction, x = command.split(" ")
-                x = int(x)
-                self.move_uav(direction=direction, x = x, reason = "Key pressed")
+                else:
+                    pass
             else:
                 time.sleep(.01)
 
