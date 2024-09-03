@@ -4,6 +4,7 @@ import threading
 from collections import deque
 from pynput import keyboard
 import time
+from openai import OpenAI
 
 class GroundControl(object):
     """Singleton object representing our ground control station"""
@@ -16,9 +17,10 @@ class GroundControl(object):
             cls._instance._initialized = False  # Add an initialized flag
         return cls._instance
 
-    def __init__(self, UAV) -> None:
+    def __init__(self, UAV, LLM) -> None:
         if not self._initialized:
             self.UAV = UAV
+            self.LLM = LLM
             self.command_queue = deque()
             self.queue_lock = threading.Lock()
             self._initialized = True  # Mark as initialized
@@ -27,16 +29,6 @@ class GroundControl(object):
 
         command = start_streamlit_app
         threading.Thread(target=command).start()
-        
-    def connect_to_uav(self, ip) -> UAV:
-        for i in range(5):
-            uav = UAV(ip)
-            uav.connect()
-            try:
-                uav.get_battery()
-                break
-            except:
-                print(f"Connection attempt #{i} to {ip} failed")
 
     # Drone movement commands
     def move_uav(self, direction: str, x: int, reason: str = None):
@@ -78,7 +70,7 @@ class GroundControl(object):
         command_thread.start()
         
     # Check queue
-    def idle(self):
+    def keyboard_control(self):
         
         key_command_map = {
     'w': "f 40",       # Move forward
@@ -146,6 +138,11 @@ class GroundControl(object):
                     pass
             else:
                 time.sleep(.01)
+                
+    def llm_control(self):
+        pass
+        
+        
 
         
 if __name__ == "__main__":

@@ -2,8 +2,12 @@ import os
 import sys
 
 # Make the current working directory the directory above so that we can call our source python files
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+def add_to_path(path:str) -> None:
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), path)))
+    
+add_to_path("..")
+add_to_path("../src")
+
 
 
 from src.GroundControl import GroundControl
@@ -27,7 +31,7 @@ def main():
     
     gc = GroundControl(uav)
     
-    gc.idle()    
+    gc.keyboard_control()    
     
 if __name__ == "__main__":
     print("Executing main")
