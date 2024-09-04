@@ -1,5 +1,6 @@
 from streamlit_app import main as start_streamlit_app
 from UAV import UAV
+from LLM import LLM, Info
 import threading
 from collections import deque
 from pynput import keyboard
@@ -69,6 +70,37 @@ class GroundControl(object):
         command_thread = threading.Thread(target=command, args=params)
         command_thread.start()
         
+    def perform_first_command(self, reason: str):
+        
+        command = self.command_queue.popleft()
+        action = command.split(" ")[0]
+        
+        if action in ['f', 'b', 'l', 'r']:  # Movement commands
+            direction, x = command.split(" ")
+            x = int(x)
+            self.move_uav(direction=direction, x=x, reason="Key pressed")
+        elif action in ['cw', 'ccw']:  # Rotation commands
+            direction, x = command.split(" ")
+            x = int(x)
+            if action == 'cw':
+                self.rotate_uav_clockwise(x, reason="Key pressed")
+            else:
+                self.rotate_uav_counter_clockwise(x, reason="Key pressed")
+        elif action == 'flip':  # Flip commands
+            direction = command.split(" ")[1]
+            self.flip_uav(direction=direction, reason="Key pressed")
+        elif action in ['up', 'down']:  # Vertical movement commands
+            direction, x = command.split(" ")
+            x = int(x)
+            if action == 'up':
+                self.move_uav(direction='u', x=x, reason="Key pressed")
+            else:
+                self.move_uav(direction='d', x=x, reason="Key pressed")
+        elif action == 'takeoff':
+            self.takeoff_uav(reason="Key pressed")
+        elif action == 'land':
+            self.land_uav(reason="Key pressed")
+        
     # Check queue
     def keyboard_control(self):
         
@@ -105,42 +137,67 @@ class GroundControl(object):
 
                 if not self.UAV.is_moving:
 
-                    command = self.command_queue.popleft()
-                    action = command.split(" ")[0]
-                    
-                    if action in ['f', 'b', 'l', 'r']:  # Movement commands
-                        direction, x = command.split(" ")
-                        x = int(x)
-                        self.move_uav(direction=direction, x=x, reason="Key pressed")
-                    elif action in ['cw', 'ccw']:  # Rotation commands
-                        direction, x = command.split(" ")
-                        x = int(x)
-                        if action == 'cw':
-                            self.rotate_uav_clockwise(x, reason="Key pressed")
-                        else:
-                            self.rotate_uav_counter_clockwise(x, reason="Key pressed")
-                    elif action == 'flip':  # Flip commands
-                        direction = command.split(" ")[1]
-                        self.flip_uav(direction=direction, reason="Key pressed")
-                    elif action in ['up', 'down']:  # Vertical movement commands
-                        direction, x = command.split(" ")
-                        x = int(x)
-                        if action == 'up':
-                            self.move_uav(direction='u', x=x, reason="Key pressed")
-                        else:
-                            self.move_uav(direction='d', x=x, reason="Key pressed")
-                    elif action == 'takeoff':
-                        self.takeoff_uav(reason="Key pressed")
-                    elif action == 'land':
-                        self.land_uav(reason="Key pressed")
+                    self.perform_first_command(reason = "Key pressed")
                 
                 else:
                     pass
             else:
                 time.sleep(.01)
                 
-    def llm_control(self):
-        pass
+    def llm_control(self, description):
+                
+        prompt = f"""
+            Tell me where this object is within the image. Here is a brief description of it: {description}.
+            You will have 3 options for the left-right axis and 3 for the vertical axis. In addition, you can tell me if it appears near medium or far. 
+            Options: left, center, right. top, center, bottom. near, medium, far.
+            In addition, it can also be marked as not present
+            Lastly, do not have any inital preference for any of these options, consider them equally as likely to occur
+            Only respond with these 3 words or not present, no punctuation or capitalization.
+        """
+        
+
+        while True:
+            
+            time.sleep(.1)
+            
+            if len(self.command_queue) > 0: # If there is an action to be performed then attempt it
+
+                if not self.UAV.is_moving:
+
+                    self.perform_first_command(reason = "LLM Command")
+                
+                else:
+                    pass
+            
+            else: # Else query the LLM
+                
+                image = self.UAV.get_frame_read().frame
+                processed_image = self.LLM._process_image(image)
+                response = self.LLM.api_request(prompt, processed_image)
+                content = response['choices'][0]['message']['content']
+                split_content = content.split(" ")
+                
+                if split_content[0] == 'not':
+                    self.command_queue.append("cw 45") # idle behavior TODO: Make this somehow pass a different 
+                                                       # type of reason to not show LLM Command since this is idle behavior
+                elif 'bottom' in content:
+                    self.command_queue.append("down 40")
+                elif 'top' in content:
+                    self.command_queue.append("up 40")
+                elif 'left' in content:
+                    self.command_queue.append("ccw 45")
+                elif 'right' in content:
+                    self.command_queue.append("cw 45")
+                elif "near" in content:
+                    self.command_queue.append("b 40")
+                elif "far" in content:
+                    self.command_queue.append("f 40")
+
+                
+
+        
+        
+        
         
         
 

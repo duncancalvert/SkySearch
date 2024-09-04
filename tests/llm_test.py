@@ -33,9 +33,9 @@ def main():
     processed_image = llm._process_image(image)
     description = "Adult male"
     prompt = f"""
-    Tell me where this object is within the image. Here is a brief description of it: {description}.
-    You will have 3 options for the left-right axis and 3 for the vertical axis. In addition, you can tell me if it appears near medium or far. Options: left, center, right. top, center, bottom. near, medium, far.
-    Only respond with these 3 words, no punctuation or capitalization.
+        Tell me where this object is within the image. Here is a brief description of it: {description}.
+        You will have 3 options for the left-right axis and 3 for the vertical axis. In addition, you can tell me if it appears near medium or far. Options: left, center, right. top, center, bottom. near, medium, far.
+        Only respond with these 3 words, no punctuation or capitalization.
     """
     
     response = llm.api_request(prompt, processed_image)
