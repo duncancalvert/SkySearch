@@ -1,4 +1,3 @@
-from openai import OpenAI
 import logging
 import cv2
 import base64
@@ -30,9 +29,6 @@ class LLM(object):
         self.API_key = API_KEY
         self.organization_id = organization_id
         self.project = project
-        self.client = OpenAI(api_key=self.API_key,
-                            organization=self.organization_id,
-                            project=self.project)
     
     def get_test_image(self):
         """
