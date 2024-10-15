@@ -55,13 +55,14 @@ class UAV(djitellopy.Tello):
         direction_str = movement_dict[direction]
 
         message = f"Moving {direction_str} by {x} cm. Reason: {reason}"
-        logger.info(message)
+        logging.info(message)
 
         self.is_moving = True
         # If the direction is down we need to account for how low it gets to the ground
         # sometimes if it get's too low and a down comand is issued then the drone will crash
 
         if direction == "d" and self.y < 50:
+            logging.info(f"Excess downward movement detected, returning None")
             return None
         elif direction == 'd':
             self.y -= x
@@ -79,7 +80,7 @@ class UAV(djitellopy.Tello):
         self.is_moving = True
         self.send_control_command("cw {}".format(x))
         self.is_moving = False
-        logger.info(message)
+        logging.info(message)
 
     def rotate_counter_clockwise(self, x: int, reason:Maybe[str] = None):
         """Rotate x degree counter-clockwise.
@@ -88,7 +89,7 @@ class UAV(djitellopy.Tello):
         """
 
         message = f"Rotating counter-clockwise by {x} degrees. Reason: {reason}"
-        logger.info(message)
+        logging.info(message)
         self.is_moving = True
         self.send_control_command("ccw {}".format(x))
         self.is_moving = False
@@ -102,7 +103,7 @@ class UAV(djitellopy.Tello):
 
         direction_str = movement_dict[direction]
         message = f"Moving {direction_str}. Reason: {reason}"
-        logger.info(message)
+        logging.info(message)
         self.is_moving = True
         self.send_control_command("flip {}".format(direction))
         self.is_moving = False
@@ -116,7 +117,9 @@ class UAV(djitellopy.Tello):
         flight_uuid = str(uuid.uuid4())
         self.current_UUID = flight_uuid
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-        message = f"Flight initiated at {current_time} with ID: {flight_uuid}. Reason: {reason}"
+        current_battery = self.get_battery()
+        current_temp = self.get_temperature()
+        message = f"Flight initiated at {current_time} with ID: {flight_uuid}. \nCurrent Battery: {current_battery}, Current Temp: {current_temp} Reason: {reason}"
         logging.info(message)
         self.is_moving = True
         self.send_control_command("takeoff", timeout=self.TAKEOFF_TIMEOUT)

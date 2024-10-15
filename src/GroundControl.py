@@ -164,7 +164,9 @@ class GroundControl(object):
             Tell me where this object is within the image. Here is a brief description of it: {description}.
             You will have 3 options for the left-right axis and 3 for the vertical axis. In addition, you can tell me if it appears near medium or far. 
             Options: left, center, right. top, center, bottom. near, medium, far.
-            If an object takes up less than 50% of the screen it is considered far away.
+            If an object takes up more than 95% of the image it is considered close.
+            If it takes up more than 80% but less than 95% it is considered medium.
+            And if it takes up less than 80% of the image it is considered far.
             In addition, it can also be marked as not present
             Lastly, do not have any inital preference for any of these options, consider them equally as likely to occur
             Only respond with these 3 words or not present, no punctuation or capitalization.
@@ -178,7 +180,8 @@ class GroundControl(object):
 
         while True:
             
-            logger.info(f"Current drone location: {self.UAV.x}, {self.UAV.y}")
+            
+            # logger.info(f"Current drone location: {self.UAV.x}, {self.UAV.y}")
             time.sleep(1)
             
             if len(self.command_queue) > 0: # If there is an action to be performed then attempt it

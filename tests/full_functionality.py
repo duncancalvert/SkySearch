@@ -39,7 +39,7 @@ def main():
     # Ground control initialization
     gc = GroundControl(uav, llm)
 
-    gc.llm_control("grey and white recliner chair")
+    gc.llm_control("dark wood end table")
 
 
     
