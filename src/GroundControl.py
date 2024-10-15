@@ -5,7 +5,11 @@ import threading
 from collections import deque
 from pynput import keyboard
 import time
-from openai import OpenAI
+import logging
+
+
+logging.basicConfig(filename='drone.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger('UAVLogger')
 
 class GroundControl(object):
     """Singleton object representing our ground control station"""
@@ -78,28 +82,28 @@ class GroundControl(object):
         if action in ['f', 'b', 'l', 'r']:  # Movement commands
             direction, x = command.split(" ")
             x = int(x)
-            self.move_uav(direction=direction, x=x, reason="Key pressed")
+            self.move_uav(direction=direction, x=x, reason=reason)
         elif action in ['cw', 'ccw']:  # Rotation commands
             direction, x = command.split(" ")
             x = int(x)
             if action == 'cw':
-                self.rotate_uav_clockwise(x, reason="Key pressed")
+                self.rotate_uav_clockwise(x, reason=reason)
             else:
-                self.rotate_uav_counter_clockwise(x, reason="Key pressed")
+                self.rotate_uav_counter_clockwise(x, reason=reason)
         elif action == 'flip':  # Flip commands
             direction = command.split(" ")[1]
-            self.flip_uav(direction=direction, reason="Key pressed")
+            self.flip_uav(direction=direction, reason=reason)
         elif action in ['up', 'down']:  # Vertical movement commands
             direction, x = command.split(" ")
             x = int(x)
             if action == 'up':
-                self.move_uav(direction='u', x=x, reason="Key pressed")
+                self.move_uav(direction='u', x=x, reason=reason)
             else:
-                self.move_uav(direction='d', x=x, reason="Key pressed")
+                self.move_uav(direction='d', x=x, reason=reason)
         elif action == 'takeoff':
-            self.takeoff_uav(reason="Key pressed")
+            self.takeoff_uav(reason=reason)
         elif action == 'land':
-            self.land_uav(reason="Key pressed")
+            self.land_uav(reason=reason)
         
     # Check queue
     def keyboard_control(self):
@@ -125,6 +129,7 @@ class GroundControl(object):
             try:
                 with self.queue_lock:
                     if key.char in key_command_map:
+                        logger.info(f"Adding command due to key press: {key_command_map[key.char]}")
                         self.command_queue.append(key_command_map[key.char])
             except AttributeError:
                 pass
@@ -143,55 +148,79 @@ class GroundControl(object):
                     pass
             else:
                 time.sleep(.01)
+    
+    def query_llm(self,prompt):
+        logger.info(f"Querying LLM with camera")
+
+        image = self.UAV.get_frame_read().frame
+        processed_image = self.LLM._process_image(image)
+        response = self.LLM.api_request(prompt, processed_image)
+        content = response['choices'][0]['message']['content']
+        return content
                 
-    def llm_control(self, description):
+    def llm_control(self, description, intense_logging = False):
                 
         prompt = f"""
             Tell me where this object is within the image. Here is a brief description of it: {description}.
             You will have 3 options for the left-right axis and 3 for the vertical axis. In addition, you can tell me if it appears near medium or far. 
             Options: left, center, right. top, center, bottom. near, medium, far.
+            If an object takes up less than 50% of the screen it is considered far away.
             In addition, it can also be marked as not present
             Lastly, do not have any inital preference for any of these options, consider them equally as likely to occur
             Only respond with these 3 words or not present, no punctuation or capitalization.
         """
         
+        self.UAV.streamon()
+        self.UAV.takeoff(reason = f"Looking for {description} using LLMs")
+
+        if intense_logging:
+            logger.info("Takeoff successful")
 
         while True:
             
-            time.sleep(.1)
+            logger.info(f"Current drone location: {self.UAV.x}, {self.UAV.y}")
+            time.sleep(1)
             
             if len(self.command_queue) > 0: # If there is an action to be performed then attempt it
+                logger.info(f"Commmand was in the queue: {self.command_queue}")
 
                 if not self.UAV.is_moving:
+
+                    logger.info(f"Attempting a movement")
 
                     self.perform_first_command(reason = "LLM Command")
                 
                 else:
+
                     pass
             
             else: # Else query the LLM
+
+                rotation_step, up_down_step, lr_step = 20, 30, 20
+                content = self.query_llm(prompt)
+                time.sleep(.05)
                 
-                image = self.UAV.get_frame_read().frame
-                processed_image = self.LLM._process_image(image)
-                response = self.LLM.api_request(prompt, processed_image)
-                content = response['choices'][0]['message']['content']
                 split_content = content.split(" ")
+
+                logger.info(f"Response received from LLM: {content}")
                 
                 if split_content[0] == 'not':
-                    self.command_queue.append("cw 45") # idle behavior TODO: Make this somehow pass a different 
+                    command = f'cw {rotation_step}'
+                    logger.info(f"Not present, appending '{command}'")
+                    self.command_queue.append(command) # idle behavior TODO: Make this somehow pass a different 
                                                        # type of reason to not show LLM Command since this is idle behavior
-                elif 'bottom' in content:
-                    self.command_queue.append("down 40")
-                elif 'top' in content:
-                    self.command_queue.append("up 40")
-                elif 'left' in content:
-                    self.command_queue.append("ccw 45")
-                elif 'right' in content:
-                    self.command_queue.append("cw 45")
-                elif "near" in content:
-                    self.command_queue.append("b 40")
-                elif "far" in content:
-                    self.command_queue.append("f 40")
+                if 'bottom' in content:
+                    self.command_queue.append(f"down {up_down_step}")
+                if 'top' in content:
+                    self.command_queue.append(f"up {up_down_step}")
+                if 'left' in content:
+                    self.command_queue.append(f"ccw {rotation_step}")
+                if 'right' in content:
+                    self.command_queue.append(f"cw {rotation_step}")
+                if "near" in content:
+                    self.command_queue.append(f"b {lr_step}")
+                if "far" in content:
+                    self.command_queue.append(f"f {lr_step}")
 
                 
 

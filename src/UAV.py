@@ -58,6 +58,13 @@ class UAV(djitellopy.Tello):
         logger.info(message)
 
         self.is_moving = True
+        # If the direction is down we need to account for how low it gets to the ground
+        # sometimes if it get's too low and a down comand is issued then the drone will crash
+
+        if direction == "d" and self.y < 50:
+            return None
+        elif direction == 'd':
+            self.y -= x
         self.send_control_command("{} {}".format(direction_str, x))
         self.is_moving = False
 
@@ -115,6 +122,7 @@ class UAV(djitellopy.Tello):
         self.send_control_command("takeoff", timeout=self.TAKEOFF_TIMEOUT)
         self.is_moving = False
         self.is_flying = True
+        self.y = 100
 
     def land(self, reason:Maybe[str] = None):
         """Automatic landing.
@@ -127,6 +135,7 @@ class UAV(djitellopy.Tello):
         self.is_moving = True
         self.send_control_command("land")
         self.is_moving = False
+        self.y = 0
 
         self.is_flying = False
 

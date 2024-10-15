@@ -29,7 +29,7 @@ def main():
     battery = uav.get_battery()
     print(battery)
     
-    gc = GroundControl(uav)
+    gc = GroundControl(uav, None)
     
     gc.keyboard_control()    
     
