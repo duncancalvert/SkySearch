@@ -17,7 +17,8 @@ from src.UAV import UAV
 def main():
     print("main started")
     # All starting inforation
-    drone_ip = "10.0.0.178"
+    # drone_ip = "10.0.0.178"
+    drone_ip = "192.168.87.33"
 
     if drone_ip is None:
         uav = UAV()

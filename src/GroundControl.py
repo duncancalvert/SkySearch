@@ -28,7 +28,12 @@ class GroundControl(object):
             self.LLM = LLM
             self.command_queue = deque()
             self.queue_lock = threading.Lock()
-            self._initialized = True  # Mark as initialized
+            self._initialized = True
+            self.all_threads = []
+            
+    def stop_all_threads(self):
+        for thread in self.all_threads:
+            thread.join()
                 
     def host_streamlit(self):
 
@@ -40,39 +45,49 @@ class GroundControl(object):
         command = self.UAV.move
         params = [direction, x, reason]
         command_thread = threading.Thread(target=command, args=params)
-        start_time = time.time()
         command_thread.start()
-        execution_time = time.time() - start_time
-
+        self.all_threads.append(command_thread)
+        
+    
     def rotate_uav_clockwise(self, x: int, reason: str):
         command = self.UAV.rotate_clockwise
         params = [x, reason]
         command_thread = threading.Thread(target=command, args=params)
         command_thread.start()
+        self.all_threads.append(command_thread)
+
 
     def rotate_uav_counter_clockwise(self, x: int, reason: str):
         command = self.UAV.rotate_counter_clockwise
         params = [x, reason]
         command_thread = threading.Thread(target=command, args=params)
         command_thread.start()
+        self.all_threads.append(command_thread)
+
 
     def flip_uav(self, direction: str, reason: str):
         command = self.UAV.flip
         params = [direction, reason]
         command_thread = threading.Thread(target=command, args=params)
         command_thread.start()
+        self.all_threads.append(command_thread)
+
 
     def takeoff_uav(self, reason: str = None):
         command = self.UAV.takeoff
         params = [reason]
         command_thread = threading.Thread(target=command, args=params)
         command_thread.start()
+        self.all_threads.append(command_thread)
+
 
     def land_uav(self, reason: str):
         command = self.UAV.land
         params = [reason]
         command_thread = threading.Thread(target=command, args=params)
         command_thread.start()
+        self.all_threads.append(command_thread)
+
         
     def perform_first_command(self, reason: str):
         
@@ -155,7 +170,7 @@ class GroundControl(object):
         image = self.UAV.get_frame_read().frame
         processed_image = self.LLM._process_image(image)
         response = self.LLM.api_request(prompt, processed_image)
-        content = response['choices'][0]['message']['content']
+        content = response
         return content
                 
     def llm_control(self, description, intense_logging = False):
@@ -182,12 +197,14 @@ class GroundControl(object):
             
             
             # logger.info(f"Current drone location: {self.UAV.x}, {self.UAV.y}")
-            time.sleep(1)
+            time.sleep(.5)
             
             if len(self.command_queue) > 0: # If there is an action to be performed then attempt it
                 logger.info(f"Commmand was in the queue: {self.command_queue}")
 
                 if not self.UAV.is_moving:
+                    
+                    self.stop_all_threads()
 
                     logger.info(f"Attempting a movement")
 
@@ -199,7 +216,7 @@ class GroundControl(object):
             
             else: # Else query the LLM
 
-                rotation_step, up_down_step, lr_step = 20, 30, 20
+                rotation_step, up_down_step, lr_step = 20, 10, 20
                 content = self.query_llm(prompt)
                 time.sleep(.05)
                 
@@ -224,15 +241,6 @@ class GroundControl(object):
                     self.command_queue.append(f"b {lr_step}")
                 if "far" in content:
                     self.command_queue.append(f"f {lr_step}")
-
-                
-
-        
-        
-        
-        
-        
-
         
 if __name__ == "__main__":
     pass

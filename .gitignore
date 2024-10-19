@@ -1,3 +1,4 @@
 *.log
 *.txt
 SkySearchImages/*.jpg
+Cocos data.json

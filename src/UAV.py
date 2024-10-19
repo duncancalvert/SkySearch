@@ -50,7 +50,9 @@ class UAV(djitellopy.Tello):
         self.is_moving = False
 
     def move(self, direction: str, x:int, reason:Maybe[str] = None):
-        """Overwrite the move method. Now let's modify stuff """
+        """
+        Overwrite the move method. Now let's modify stuff
+        """
 
         direction_str = movement_dict[direction]
 
@@ -66,24 +68,37 @@ class UAV(djitellopy.Tello):
             return None
         elif direction == 'd':
             self.y -= x
-        self.send_control_command("{} {}".format(direction_str, x))
+        try:
+            self.send_control_command("{} {}".format(direction_str, x))
+        except Exception as e:
+            logging.info(f"Thread: {direction_str} by {x}, just errored out with error\n{e}")
+
         self.is_moving = False
+        logging.info(f"Movement thread which was doing {direction_str} by {x} just finished")
 
 
     def rotate_clockwise(self, x: int, reason:Maybe[str] = None):
-        """Rotate x degree clockwise.
+        """
+        Rotate x degree clockwise.
         Arguments:
             x: 1-360
         """
 
         message = f"Rotating clockwise by {x} degrees. Reason: {reason}"
         self.is_moving = True
-        self.send_control_command("cw {}".format(x))
+        try:
+            self.send_control_command("cw {}".format(x))
+        except Exception as e:
+            logging.info(f"Thread: clockwise by {x}, just errored out with error\n{e}")
+
         self.is_moving = False
         logging.info(message)
+        logging.info(f"Movement thread which was rotating clockwise by {x} just finished")
+
 
     def rotate_counter_clockwise(self, x: int, reason:Maybe[str] = None):
-        """Rotate x degree counter-clockwise.
+        """
+        Rotate x degree counter-clockwise.
         Arguments:
             x: 1-360
         """
@@ -91,11 +106,18 @@ class UAV(djitellopy.Tello):
         message = f"Rotating counter-clockwise by {x} degrees. Reason: {reason}"
         logging.info(message)
         self.is_moving = True
-        self.send_control_command("ccw {}".format(x))
+        try:
+            self.send_control_command("ccw {}".format(x))
+        except Exception as e:
+            logging.info(f"Thread: counter clockwise by {x}, just errored out with error\n {e}")
+
         self.is_moving = False
+        logging.info(f"Movement thread which was rotating counter clockwise by {x} just finished")
+
 
     def flip(self, direction: str, reason:Maybe[str] = None):
-        """Do a flip maneuver.
+        """
+        Do a flip maneuver.
         Users would normally call one of the flip_x functions instead.
         Arguments:
             direction: l (left), r (right), f (forward) or b (back)
@@ -109,7 +131,8 @@ class UAV(djitellopy.Tello):
         self.is_moving = False
 
     def takeoff(self, reason: str = None):
-        """Automatic takeoff.
+        """
+        Automatic takeoff.
         """
         # Something it takes a looooot of time to take off and return a succesful takeoff.
         # So we better wait. Otherwise, it would give us an error on the following calls.
@@ -119,7 +142,7 @@ class UAV(djitellopy.Tello):
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
         current_battery = self.get_battery()
         current_temp = self.get_temperature()
-        message = f"Flight initiated at {current_time} with ID: {flight_uuid}. \nCurrent Battery: {current_battery}, Current Temp: {current_temp} Reason: {reason}"
+        message = f"Flight initiated at {current_time} with ID: {flight_uuid}.\nCurrent Battery: {current_battery}, Current Temp: {current_temp} Reason: {reason}"
         logging.info(message)
         self.is_moving = True
         self.send_control_command("takeoff", timeout=self.TAKEOFF_TIMEOUT)
@@ -128,7 +151,8 @@ class UAV(djitellopy.Tello):
         self.y = 100
 
     def land(self, reason:Maybe[str] = None):
-        """Automatic landing.
+        """
+        Automatic landing.
         """
 
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")

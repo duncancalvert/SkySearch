@@ -11,3 +11,6 @@ djitellopy
 keyboard
 mediapipe
 pynput
+google-cloud-aiplatform
+Pillow
+google-auth
