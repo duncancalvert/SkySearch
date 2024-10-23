@@ -1,4 +1,5 @@
 *.log
+!prompts.log
 *.txt
 SkySearchImages/*.jpg
 Cocos data.json

@@ -1,0 +1,37 @@
+########################################################################################################
+################################ PROMPT 1 ##############################################################
+Tell me where this object is within the image. Here is a brief description of it: {description}.
+You will have 3 options for the left-right axis and 3 for the vertical axis. In addition, you can tell me if it appears near medium or far. Options: left, center, right. top, center, bottom. near, medium, far.
+Only respond with these 3 words, no punctuation or capitalization.
+########################################################################################################
+################################ PROMPT 2 ##############################################################
+Please provide the object’s location within the image based on this description: {description}. Use only these options for your response:
+
+	•	Horizontal position: left, center, right
+	•	Vertical position: top, center, bottom
+	•	Depth: near, medium, far
+
+Respond with exactly three words—one from each category—without punctuation or capitalization.
+########################################################################################################
+################################ PROMPT 3 ##############################################################
+Please locate the object within the image based on the following description: {description}
+
+Instructions:
+
+	•	Horizontal Position: Select one word to describe the object’s position from left to right:
+	•	left
+	•	center
+	•	right
+	•	Vertical Position: Select one word to describe the object’s position from top to bottom:
+	•	top
+	•	center
+	•	bottom
+	•	Depth: Select one word to describe how close the object appears:
+	•	near
+	•	medium
+	•	far
+
+Your response should:
+
+	•	Consist of exactly three words, one from each category above.
+	•	Exclude any additional words, punctuation, or capitalization.
