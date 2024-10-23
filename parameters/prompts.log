@@ -54,4 +54,22 @@ Instructions:
 Additional Instructions:
 • Exclude any additional words, punctuation, or capitalization.
 
+########################################################################################################
+################################ PROMPT 5 ##############################################################
+
+You are an expert vision model that is amazing at object detection. Locate the following object within the image: {object}.
+
+Instructions:
+1. Determine if the object "yes" (meaning it is)/ "no" (meaning it isn't)
+2. Separate the image into a 3x3 grid of with the following combinations:
+	• Horizontal: left, center, right
+	• Vertical: top, center, bottom
+3. Additionally, categorize the object depth based on the following 3 labels
+	• Depth: near, medium, far
+4. Based on the above instructions, provide an exactly 4 word response in this exact format {object in image (yes/no), horizontal label value, vertical label value, depth label value}
+	• Example response: {yes, left, center, far}
+	• Example response 2: {no, right, center, near}
+
+Additional Instructions:
+• Exclude any additional words, punctuation, or capitalization.
 
