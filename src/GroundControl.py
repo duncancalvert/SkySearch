@@ -164,16 +164,16 @@ class GroundControl(object):
             else:
                 time.sleep(.01)
     
-    def query_llm(self,prompt):
+    def query_llm(self,prompt, model):
         logger.info(f"Querying LLM with camera")
 
         image = self.UAV.get_frame_read().frame
         processed_image = self.LLM._process_image(image)
-        response = self.LLM.api_request(prompt, processed_image)
+        response = self.LLM.api_request(prompt, processed_image, model)
         content = response
         return content
                 
-    def llm_control(self, description, intense_logging = False):
+    def llm_control(self, description, model, intense_logging = False):
                 
         prompt = f"""
             Tell me where this object is within the image. Here is a brief description of it: {description}.
@@ -217,7 +217,7 @@ class GroundControl(object):
             else: # Else query the LLM
 
                 rotation_step, up_down_step, lr_step = 20, 10, 20
-                content = self.query_llm(prompt)
+                content = self.query_llm(prompt, model=model)
                 time.sleep(.05)
                 
                 split_content = content.split(" ")

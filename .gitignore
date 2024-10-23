@@ -2,4 +2,4 @@
 !prompts.log
 *.txt
 SkySearchImages/*.jpg
-Cocos data.json
+gcp_credentials.json

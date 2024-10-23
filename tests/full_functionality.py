@@ -19,8 +19,8 @@ from src.GroundControl import GroundControl
 def main():
 
     # All starting inforation
-    # drone_ip = "10.0.0.178"
-    drone_ip = "192.168.87.33"
+    drone_ip = "10.0.0.178"
+    # drone_ip = "192.168.87.33"
 
     if drone_ip is None:
         uav = UAV()
@@ -35,12 +35,12 @@ def main():
     # LLM Initialization
     info = Info()
 
-    llm = LLM(info.API_KEY, info.ORGANIZATION, info.PROJECT)
+    llm = LLM(info.API_KEY, info.ORGANIZATION, info.PROJECT, 'gcp_credentials.json')
 
     # Ground control initialization
     gc = GroundControl(uav, llm)
 
-    gc.llm_control("black jacket on a hanger")
+    gc.llm_control("white man sitting in a black chair wearing white and gray", 'gemini-1.5-pro')
 
 
     
