@@ -3,6 +3,7 @@ import djitellopy
 import logging
 import datetime
 import uuid
+import threading
 
 # This will instantiate our logger
 logging.basicConfig(filename='drone.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -30,6 +31,8 @@ rotation_dictionary = {
     'ccw': 'counter-clockwise'
 }
 
+# TODO: Look at the compute available on the drone
+
 # Random Misc. information necessary for the Tello parent class to function
 TELLO_IP = '192.168.10.1'
 RETRY_COUNT = 3
@@ -48,6 +51,7 @@ class UAV(djitellopy.Tello):
         self.rotation = 0 # in degrees
         self.height = 100 # in cm
         self.is_moving = False
+        self.lock = threading.Lock()
 
     def move(self, direction: str, x:int, reason:Maybe[str] = None):
         """
@@ -59,7 +63,8 @@ class UAV(djitellopy.Tello):
         message = f"Moving {direction_str} by {x} cm. Reason: {reason}"
         logging.info(message)
 
-        self.is_moving = True
+        with self.lock:
+            self.is_moving = True
         # If the direction is down we need to account for how low it gets to the ground
         # sometimes if it get's too low and a down comand is issued then the drone will crash
 
@@ -72,9 +77,10 @@ class UAV(djitellopy.Tello):
             self.send_control_command("{} {}".format(direction_str, x))
         except Exception as e:
             logging.info(f"Thread: {direction_str} by {x}, just errored out with error\n{e}")
-
-        self.is_moving = False
-        logging.info(f"Movement thread which was doing {direction_str} by {x} just finished")
+        finally:
+            with self.lock:
+                self.is_moving = False
+            logging.info(f"Movement thread which was doing {direction_str} by {x} just finished")
 
 
     def rotate_clockwise(self, x: int, reason:Maybe[str] = None):
@@ -85,15 +91,17 @@ class UAV(djitellopy.Tello):
         """
 
         message = f"Rotating clockwise by {x} degrees. Reason: {reason}"
-        self.is_moving = True
+        with self.lock:
+            self.is_moving = True
         try:
             self.send_control_command("cw {}".format(x))
         except Exception as e:
             logging.info(f"Thread: clockwise by {x}, just errored out with error\n{e}")
-
-        self.is_moving = False
-        logging.info(message)
-        logging.info(f"Movement thread which was rotating clockwise by {x} just finished")
+        finally:
+            with self.lock:
+                self.is_moving = False
+            logging.info(message)
+            logging.info(f"Movement thread which was rotating clockwise by {x} just finished")
 
 
     def rotate_counter_clockwise(self, x: int, reason:Maybe[str] = None):
@@ -104,15 +112,17 @@ class UAV(djitellopy.Tello):
         """
 
         message = f"Rotating counter-clockwise by {x} degrees. Reason: {reason}"
-        logging.info(message)
-        self.is_moving = True
+        with self.lock:
+            self.is_moving = True
         try:
             self.send_control_command("ccw {}".format(x))
         except Exception as e:
             logging.info(f"Thread: counter clockwise by {x}, just errored out with error\n {e}")
-
-        self.is_moving = False
-        logging.info(f"Movement thread which was rotating counter clockwise by {x} just finished")
+        finally:
+            with self.lock:
+                self.is_moving = False
+            logging.info(message)
+            logging.info(f"Movement thread which was rotating counter clockwise by {x} just finished")
 
 
     def flip(self, direction: str, reason:Maybe[str] = None):

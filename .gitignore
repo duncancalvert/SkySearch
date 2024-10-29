@@ -3,3 +3,4 @@
 *.txt
 SkySearchImages/*.jpg
 gcp_credentials.json
+*.svg

@@ -26,8 +26,9 @@ class GroundControl(object):
         if not self._initialized:
             self.UAV = UAV
             self.LLM = LLM
+            self.frame_count = 0
             self.command_queue = deque()
-            self.queue_lock = threading.Lock()
+            self.lock = threading.Lock()
             self._initialized = True
             self.all_threads = []
             
@@ -142,7 +143,7 @@ class GroundControl(object):
 
         def on_press(key):
             try:
-                with self.queue_lock:
+                with self.lock:
                     if key.char in key_command_map:
                         logger.info(f"Adding command due to key press: {key_command_map[key.char]}")
                         self.command_queue.append(key_command_map[key.char])
@@ -164,14 +165,24 @@ class GroundControl(object):
             else:
                 time.sleep(.01)
     
-    def query_llm(self,prompt, model):
-        logger.info(f"Querying LLM with camera")
 
+    def query_llm(self, prompt, model, frame_skip=5):
+        import cv2
+
+        if self.frame_count % frame_skip != 0:
+            self.frame_count += 1
+            return None
+
+        # Retrieve and convert the frame to grayscale for reduced memory use
         image = self.UAV.get_frame_read().frame
-        processed_image = self.LLM._process_image(image)
+        gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        # Process and send the grayscale image
+        processed_image = self.LLM._process_image(gray_image)
         response = self.LLM.api_request(prompt, processed_image, model)
-        content = response
-        return content
+
+        self.frame_count += 1
+        return response
                 
     def llm_control(self, description, model, intense_logging = False):
                 
@@ -189,20 +200,23 @@ class GroundControl(object):
         
         self.UAV.streamon()
         self.UAV.takeoff(reason = f"Looking for {description} using LLMs")
+        
+        time.sleep(5)
 
         if intense_logging:
             logger.info("Takeoff successful")
 
         while True:
             
-            
             # logger.info(f"Current drone location: {self.UAV.x}, {self.UAV.y}")
             time.sleep(.5)
             
             if len(self.command_queue) > 0: # If there is an action to be performed then attempt it
                 logger.info(f"Commmand was in the queue: {self.command_queue}")
+                with self.lock:
+                    IS_MOVING = self.UAV.is_moving
 
-                if not self.UAV.is_moving:
+                if not IS_MOVING: # If the UAV has stopped moving
                     
                     self.stop_all_threads()
 
@@ -218,6 +232,11 @@ class GroundControl(object):
 
                 rotation_step, up_down_step, lr_step = 20, 10, 20
                 content = self.query_llm(prompt, model=model)
+                
+                if content is None:
+                    time.sleep(1)
+                    continue
+                
                 time.sleep(.05)
                 
                 split_content = content.split(" ")

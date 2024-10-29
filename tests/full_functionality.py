@@ -20,7 +20,7 @@ def main():
 
     # All starting inforation
     drone_ip = "10.0.0.178"
-    # drone_ip = "192.168.87.33"
+    # drone_ip = "192.168.87.22"
 
     if drone_ip is None:
         uav = UAV()
@@ -40,7 +40,7 @@ def main():
     # Ground control initialization
     gc = GroundControl(uav, llm)
 
-    gc.llm_control("white man sitting in a black chair wearing white and gray", 'gemini-1.5-pro')
+    gc.llm_control("blue jacket on a coat hanger", 'gpt-4o-mini')
 
 
     
