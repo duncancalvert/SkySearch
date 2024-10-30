@@ -26,11 +26,11 @@ class GroundControl(object):
         if not self._initialized:
             self.UAV = UAV
             self.LLM = LLM
-            self.frame_count = 0
             self.command_queue = deque()
-            self.lock = threading.Lock()
+            self.queue_lock = threading.Lock()
             self._initialized = True
             self.all_threads = []
+            self.uav_busy = False  # Flag to track if UAV is busy Ravi added to check if uav is busy if busy wait (Ravi)
             
     def stop_all_threads(self):
         for thread in self.all_threads:
@@ -90,36 +90,51 @@ class GroundControl(object):
         self.all_threads.append(command_thread)
 
         
-    def perform_first_command(self, reason: str):
-        
+    def perform_first_command(self, reason: str): # I did rewrite the code base (Ravi)
         command = self.command_queue.popleft()
         action = command.split(" ")[0]
+        max_attempts = 4  # Retry limit for each command
+        attempts = 0
+        success = False
         
-        if action in ['f', 'b', 'l', 'r']:  # Movement commands
-            direction, x = command.split(" ")
-            x = int(x)
-            self.move_uav(direction=direction, x=x, reason=reason)
-        elif action in ['cw', 'ccw']:  # Rotation commands
-            direction, x = command.split(" ")
-            x = int(x)
-            if action == 'cw':
-                self.rotate_uav_clockwise(x, reason=reason)
+        while attempts < max_attempts:
+            # Execute command based on type
+            if action in ['f', 'b', 'l', 'r']:
+                direction, x = command.split(" ")
+                x = int(x)
+                self.move_uav(direction=direction, x=x, reason=reason)
+            elif action in ['cw', 'ccw']:
+                direction, x = command.split(" ")
+                x = int(x)
+                if action == 'cw':
+                    self.rotate_uav_clockwise(x, reason=reason)
+                else:
+                    self.rotate_uav_counter_clockwise(x, reason=reason)
+            elif action == 'flip':
+                direction = command.split(" ")[1]
+                self.flip_uav(direction=direction, reason=reason)
+            elif action in ['up', 'down']:
+                direction, x = command.split(" ")
+                x = int(x)
+                if action == 'up':
+                    self.move_uav(direction='u', x=x, reason=reason)
+                else:
+                    self.move_uav(direction='d', x=x, reason=reason)
+            elif action == 'takeoff':
+                self.takeoff_uav(reason=reason)
+            elif action == 'land':
+                self.land_uav(reason=reason)
+            
+            attempts += 1
+            # Simulate checking if the command was successful (Replace with actual status check)
+            if success:
+                break
             else:
-                self.rotate_uav_counter_clockwise(x, reason=reason)
-        elif action == 'flip':  # Flip commands
-            direction = command.split(" ")[1]
-            self.flip_uav(direction=direction, reason=reason)
-        elif action in ['up', 'down']:  # Vertical movement commands
-            direction, x = command.split(" ")
-            x = int(x)
-            if action == 'up':
-                self.move_uav(direction='u', x=x, reason=reason)
-            else:
-                self.move_uav(direction='d', x=x, reason=reason)
-        elif action == 'takeoff':
-            self.takeoff_uav(reason=reason)
-        elif action == 'land':
-            self.land_uav(reason=reason)
+                logger.info(f"Retrying command '{command}', attempt {attempts}/{max_attempts}")
+
+        if attempts == max_attempts:
+            logger.info(f"Command '{command}' was unsuccessful after {attempts} tries. Removing from queue.")
+
         
     # Check queue
     def keyboard_control(self):
@@ -143,7 +158,7 @@ class GroundControl(object):
 
         def on_press(key):
             try:
-                with self.lock:
+                with self.queue_lock:
                     if key.char in key_command_map:
                         logger.info(f"Adding command due to key press: {key_command_map[key.char]}")
                         self.command_queue.append(key_command_map[key.char])
@@ -165,24 +180,14 @@ class GroundControl(object):
             else:
                 time.sleep(.01)
     
+    def query_llm(self,prompt, model):
+        logger.info(f"Querying LLM with camera")
 
-    def query_llm(self, prompt, model, frame_skip=5):
-        import cv2
-
-        if self.frame_count % frame_skip != 0:
-            self.frame_count += 1
-            return None
-
-        # Retrieve and convert the frame to grayscale for reduced memory use
         image = self.UAV.get_frame_read().frame
-        gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-        # Process and send the grayscale image
-        processed_image = self.LLM._process_image(gray_image)
+        processed_image = self.LLM._process_image(image)
         response = self.LLM.api_request(prompt, processed_image, model)
-
-        self.frame_count += 1
-        return response
+        # content = response # Not need just return the response (Ravi)
+        return response # Changed content to response (Ravi)
                 
     def llm_control(self, description, model, intense_logging = False):
                 
@@ -200,12 +205,12 @@ class GroundControl(object):
         
         self.UAV.streamon()
         self.UAV.takeoff(reason = f"Looking for {description} using LLMs")
-        
-        time.sleep(5)
 
         if intense_logging:
             logger.info("Takeoff successful")
 
+        not_present_count = 0
+        
         while True:
             
             # logger.info(f"Current drone location: {self.UAV.x}, {self.UAV.y}")
@@ -213,10 +218,8 @@ class GroundControl(object):
             
             if len(self.command_queue) > 0: # If there is an action to be performed then attempt it
                 logger.info(f"Commmand was in the queue: {self.command_queue}")
-                with self.lock:
-                    IS_MOVING = self.UAV.is_moving
 
-                if not IS_MOVING: # If the UAV has stopped moving
+                if not self.UAV.is_moving:
                     
                     self.stop_all_threads()
 
@@ -231,23 +234,38 @@ class GroundControl(object):
             else: # Else query the LLM
 
                 rotation_step, up_down_step, lr_step = 20, 10, 20
+                # content = self.query_llm(prompt, model=model)
+                # time.sleep(.05)
+                
+                # split_content = content.split(" ")
+
+                # logger.info(f"Response received from LLM: {content}")
+                
+                # if split_content[0] == 'not':
+                #     command = f'cw {rotation_step}'
+                #     logger.info(f"Not present, appending '{command}'")
+                #     self.command_queue.append(command) # idle behavior TODO: Make this somehow pass a different 
+                #                                        # type of reason to not show LLM Command since this is idle behavior
+
                 content = self.query_llm(prompt, model=model)
-                
-                if content is None:
-                    time.sleep(1)
-                    continue
-                
-                time.sleep(.05)
-                
+                logger.info(f"Response received from LLM: {content}")
                 split_content = content.split(" ")
 
-                logger.info(f"Response received from LLM: {content}")
-                
                 if split_content[0] == 'not':
-                    command = f'cw {rotation_step}'
-                    logger.info(f"Not present, appending '{command}'")
-                    self.command_queue.append(command) # idle behavior TODO: Make this somehow pass a different 
-                                                       # type of reason to not show LLM Command since this is idle behavior
+                    # not_present_count += 1
+                    # if not_present_count > 3:  # Modify rotation step if not found after 3 attempts
+                    #     command = f'cw {rotation_step + 10}'
+                    #     logger.info(f"Not present repeatedly, appending '{command}' with increased rotation")
+                    # else:
+                    #     command = 'cw 20'
+                    #     logger.info(f"Not present, appending '{command}'")
+                    # self.command_queue.append(command)
+                    self.rotate_uav_clockwise(20, "Item not present in LLM search")
+                    
+                else:
+                    not_present_count = 0  # Reset if object is detected
+
+
                 if 'bottom' in content:
                     self.command_queue.append(f"down {up_down_step}")
                 if 'top' in content:
