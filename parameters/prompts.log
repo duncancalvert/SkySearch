@@ -37,8 +37,11 @@ Your response should:
 	•	Exclude any additional words, punctuation, or capitalization.
 
 
-########################################################################################################
-################################ PROMPT ##############################################################
+
+
+######################################################################################################################
+######################################################## PROMPT 4 ####################################################
+
 You are a vision model that is an expert at object detection. Locate the following object within the picture: {object}.
 
 Instructions:
@@ -53,7 +56,12 @@ Instructions:
 	• Example response #2: {no, left, top, near}
 
 Additional Instructions:
-• Exclude any additional words, punctuation, or capitalization.
+	• Exclude any additional words, punctuation, or capitalization.
+
+
+
+
+
 
 ########################################################################################################
 ################################ PROMPT 5 ##############################################################
