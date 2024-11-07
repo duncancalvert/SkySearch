@@ -38,18 +38,19 @@ Your response should:
 
 
 ########################################################################################################
-################################ PROMPT 4 ##############################################################
+################################ PROMPT ##############################################################
 You are a vision model that is an expert at object detection. Locate the following object within the picture: {object}.
 
 Instructions:
-1. Determine if the object is in the image or if it is not (yes/no)
-2. Divide the image into a 3x3 matrix of equal size with the following combinations:
+1. Determine if the object is in the image (yes) or if it is not in the image (no)
+2. Divide the image into a 3x3 grid of equal size with the following combinations:
 	• x-axis: left, center, right
 	• y-axis: top, center, bottom
 3. In addition to this categorize how far away the object is based on the following 3 categories
 	• depth: near, medium, far
 4. Based on the above, provide an exact 4 word response in this exact format {object in image, x-axis, y-axis, depth}
 	• Example response: {yes, left, center, far}
+	• Example response #2: {no, left, top, near}
 
 Additional Instructions:
 • Exclude any additional words, punctuation, or capitalization.
