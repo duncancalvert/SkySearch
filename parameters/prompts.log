@@ -82,3 +82,43 @@ Instructions:
 Additional Instructions:
 • Exclude any additional words, punctuation, or capitalization.
 
+## Ayans Prompts
+## Prompt 1:
+
+*Objective*: Locate the object within the image using the provided description.
+*Prompt*:
+Identify the object's location in the image based on this description: {description}. You have three possible options for each axis. Respond with exactly one word from each set:
+>
+- Horizontal: left, center, right
+- Vertical: top, center, bottom
+- Distance: near, medium, far
+>
+Provide your answer using only three words—no punctuation, no capitalization.
+
+---------------------------------------------------------------------------------------------------------------------
+
+## Prompt 2:
+
+*Objective*: Determine the object's position based on the description.
+*Prompt*:
+Based on the description: {description}, tell me where the object is in the image. Choose one word for each of the following categories:
+>
+- Left-right axis: left, center, right
+- Vertical axis: top, center, bottom
+- Distance from the camera: near, medium, far
+>
+Reply with exactly three words, with no extra words, punctuation, or capitalization.
+
+----------------------------------------------------------------------------------------------------------------------
+
+## Prompt 3:
+
+*Objective*: Pinpoint the object's location using a structured response.
+*Prompt*:
+Given the description: {description}, locate the object in the image. Select one word from each of the following:
+>
+- Horizontal position: left, center, right
+- Vertical position: top, center, bottom
+- Depth: near, medium, far
+>
+Your response must be three words—one from each set. Do not add punctuation or capital letters.
