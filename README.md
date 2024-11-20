@@ -7,6 +7,8 @@
 # SkySearch: Missing Person Identification Using Aerial Drone Sensing
 UChicago Robotics Capstone December 2024
 
+
+|||
 | --- | --- |
 | Authors | Duncan Calvert, Joon Park, Zach Farahany, Mohammad Ayan Raheel|
 | Package | [![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org)|
