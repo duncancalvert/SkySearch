@@ -11,10 +11,10 @@ from djitellopy import Tello
 # wifi_name = "OUR2.4"
 # wifi_password = "ZachAlex12"
 
-wifi_name = "drone"
-wifi_password = "Apple123!"
+wifi_name = "Hythladeaus"
+wifi_password = "dispenserofnonsense"
 
-# Connect to the drone
+# Connect to the drones
 drone = Tello()
 drone.connect()
 

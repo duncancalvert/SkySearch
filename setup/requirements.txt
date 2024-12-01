@@ -9,7 +9,6 @@ PyYAML
 returns
 djitellopy
 keyboard
-mediapipe
 pynput
 google-cloud-aiplatform
 Pillow

@@ -6,7 +6,7 @@ import math
 
 
 def tello_connect():
-    TELLO_IP = "192.168.0.193"
+    TELLO_IP = "10.0.0.120"
     # Start Connection With Drone
     tello = Tello(TELLO_IP)
     tello.connect()
