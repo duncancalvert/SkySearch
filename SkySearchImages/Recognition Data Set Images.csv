@@ -1,0 +1,138 @@
+Image number,Image File name,Item in image,True item  Location,Annotator,ChatGPT 4o prediction,ChatGPT 4o prediction2,ChatGPT 4o prediction3,ChatGPT 4o prediction4
+0,IMAGE_000.jpg,Blue recycling bin,"center, center, far",Zach,center bottom far,center bottom far,center bottom far,center bottom far
+1,IMAGE_001.jpg,Black cup,"left, bottom, medium",Zach,left bottom near,left bottom near,left bottom near,left bottom near
+2,IMAGE_002.jpg,Crock sandal,"center, center, medium",Zach,center bottom medium,left center medium,center bottom near,center bottom near
+3,IMAGE_003.jpg,Amazon box,"center, center, close",Zach,center center near,center center near,center top near,center center near
+4,IMAGE_004.jpg,Basketball,"center, center, medium",Zach,right bottom medium,right bottom near,center bottom near,left bottom near
+5,IMAGE_005.jpg,Amazon box,"right, top, close",Zach,center top medium,left center near,center top near,center top near
+6,IMAGE_006.jpg,Globe,"left, bottom, medium",Zach,left center near,left center near,left center medium,left bottom medium
+7,IMAGE_007.jpg,Basketball,"right, top, medium",Zach,right top near,right center near,right center near,right top near
+8,IMAGE_008.jpg,Handheld vacuum,"center, center, medium",Zach,center center near,left center near,center center near,center center near
+9,IMAGE_009.jpg,Light post,"center, center, far",Zach,center bottom medium,center bottom medium,center bottom medium,center bottom medium
+10,IMAGE_010.jpg,Candle stick,"center, center, far",Zach,center center near,right center medium,center bottom near,center center near
+11,IMAGE_011.jpg,Short water bottle,"center, center, close",Zach,center bottom medium,center bottom near,center bottom medium,center center medium
+12,IMAGE_012.jpg,Les Paul Guiter,"left, center, medium",Zach,center center near,left center medium,center top near,left center near
+13,IMAGE_013.jpg,Light post,"left, center, far",Zach,left bottom near,left bottom medium,left bottom medium,left bottom medium
+14,IMAGE_014.jpg,Flowers,"right, top, close",Zach,right top medium,right top near,right top near,right top near
+15,IMAGE_015.jpg,Keyboard,"center, top, close",Zach,center top far,center top medium,center top medium,center top medium
+16,IMAGE_016.jpg,Keyboard,"center, center, close",Zach,center bottom near,center bottom near,center bottom near,center bottom near
+17,IMAGE_017.jpg,Black cup,"center, center, medium",Zach,center bottom near,center bottom near,center top near,center bottom near
+18,IMAGE_018.jpg,Light post,"right, center, far",Zach,right bottom medium,right top far,right bottom medium,right bottom medium
+19,IMAGE_019.jpg,Les Paul Guiter,"center, center, medium",Zach,center center near,center center medium,center center medium,center center near
+20,IMAGE_020.jpg,Cat,"left, top, medium",Zach,left center near,left center near,left top near,left center near
+21,IMAGE_021.jpg,Computer Mouse,"right, center, medium",Zach,right center medium,right center near,right center near,right center near
+22,IMAGE_022.jpg,Les Paul Guiter,"left, top, medium",Zach,left center near,left center near,left center near,left center near
+23,IMAGE_023.jpg,Cat,"right, center, medium",Zach,right center near,right center medium,right center near,right center near
+24,IMAGE_024.jpg,Flowers,"center, center, medium",Zach,center center near,center center near,center center near,center top near
+25,IMAGE_025.jpg,Short water bottle,"left, bottom, medium",Zach,left bottom near,left bottom near,left bottom near,left bottom near
+26,IMAGE_026.jpg,Candle stick,"center, center, close",Zach,center bottom near,center bottom near,center bottom near,center bottom near
+27,IMAGE_027.jpg,Short water bottle,"right, top, close",Zach,left top near,left top near,left top near,left top near
+28,IMAGE_028.jpg,Candle stick,"right, center, medium",Zach,center bottom near,center bottom near,center bottom near,center bottom near
+29,IMAGE_029.jpg,Flowers,"right, center, medium",Zach,right center near,center center near,right center near,center top near
+30,IMAGE_030.jpg,Cat,"center, center, medium",Zach,center center near,center center near,center center medium,left center near
+31,IMAGE_031.jpg,Computer Mouse,"center, center, medium",Zach,center center medium,center center near,center center medium,center center medium
+32,IMAGE_032.jpg,Basketball,"left, bottom, medium",Zach,left bottom near,left bottom near,left bottom near,left bottom near
+33,IMAGE_033.jpg,Handheld vacuum,"center, top, medium",Zach,center center near,right center near,right center near,right center near
+34,IMAGE_034.jpg,Chair,"center, center, medium",Zach,center bottom medium,center bottom medium,center bottom medium,center bottom medium
+35,IMAGE_035.jpg,Globe,"right, bottom, medium",Zach,right center near,right bottom near,right bottom near,right bottom medium
+36,IMAGE_036.jpg,Crock sandal,"right, center, medium",Zach,right bottom medium,right bottom near,right bottom near,right bottom near
+37,IMAGE_037.jpg,Crock sandal,"left, center, medium",Zach,left bottom near,left bottom near,left bottom near,left bottom near
+38,IMAGE_038.jpg,Globe,"center, center, medium",Zach,left center near,left center near,left center near,center center near
+39,IMAGE_039.jpg,Chair,"right, center, medium",Zach,right bottom near,right bottom near,right bottom medium,right bottom near
+40,IMAGE_040.jpg,Basketball,"left, top, medium",Zach,left top medium,left top medium,left top medium,left top medium
+41,IMAGE_041.jpg,Amazon box,"left, bottom, close",Zach,right bottom near,center bottom near,center bottom near,center bottom near
+42,IMAGE_042.jpg,Pool,"center, center, medium",Ayan,,,,center center medium
+43,IMAGE_043.jpg,Person,"left, center, close",Ayan,,,,left bottom near
+44,IMAGE_044.jpg,Tree,"center, bottom, medium",Ayan,,,,left bottom medium
+45,IMAGE_045.jpg,Trash Can,"center, center, far",Ayan,,,,center bottom far
+46,IMAGE_046.jpg,Cup,"left, bottom, close",Ayan,,,,left bottom near
+47,IMAGE_047.jpg,Skate Board,"center, center, close",Joon,,,,left bottom near
+48,IMAGE_048.jpg,Candy,"center, center, close",Joon,,,,center bottom medium
+49,IMAGE_049.jpg,Cereal,"center, center, close",Joon,,,,left bottom near
+50,IMAGE_050.jpg,Crock sandal,"center, center, close",Ayan,,,,center bottom near
+51,IMAGE_051.jpg,Amazon box,"center, center, close",Ayan,,,,center center near
+52,IMAGE_052.jpg,Tree,"right, center, medium",Ayan,,,,left top far
+53,IMAGE_053.jpg,Basketball,"center, center, medium",Ayan,,,,left bottom near
+54,IMAGE_054.jpg,Keyboard,"right, center, medium",Joon,,,,right center medium
+55,IMAGE_055.jpg,Cereal,"left, center, medium",Joon,,,,center bottom near
+56,IMAGE_056.jpg,Ornaments,"center, top, far",Ayan,,,,center top far
+57,IMAGE_057.jpg,Candy,"right, center, medium",Joon,,,,right bottom near
+58,IMAGE_058.jpg,Dell Laptop,"right, bottom, medium",Joon,,,,right bottom medium
+59,IMAGE_059.jpg,Lamp Post,"center, center, medium",Ayan,,,,center center medium
+60,IMAGE_060.jpg,Amazon box,"right, top, medium",Ayan,,,,center top near
+61,IMAGE_061.jpg,Globe,"left, bottom, close ",Ayan,,,,left bottom near
+62,IMAGE_062.jpg,Basketball,"right, top, medium",Ayan,,,,right top near
+63,IMAGE_063.jpg,Cereal,"right, bottom, close",Joon,,,,right bottom near
+64,IMAGE_064.jpg,Skate Board,"center, center, close",Joon,,,,left bottom near
+65,IMAGE_065.jpg,Lid,"right, bottom, medium",Joon,,,,center bottom near
+66,IMAGE_066.jpg,Turkish Flah,"left, center, far",Ayan,,,,left top medium
+67,IMAGE_067.jpg,Vaccum Cleaner,"center, center, close",Ayan,,,,right center near
+68,IMAGE_068.jpg,UFC Sign,"right, top, medium",Ayan,,,,center top far
+69,IMAGE_069.jpg,Lamp Post,"center, center,  far",Ayan,,,,center bottom medium
+70,IMAGE_070.jpg,Hot Airballoon with Red Stripes,"center, top, far",Ayan,,,,center top far
+71,IMAGE_071.jpg,Red Flowers,"center, center, far",Ayan,,,,right center near
+72,IMAGE_072.jpg,Toothpaste,"center, center, close",Joon,,,,center center near
+73,IMAGE_073.jpg,Candle,"center, center, far",Ayan,,,,center center near
+74,IMAGE_074.jpg,Water Bottle,"center, center, medium",Ayan,,,,center center medium
+75,IMAGE_075.jpg,Windows,"center, center, medium",Ayan,,,,center center far
+76,IMAGE_076.jpg,Hammock,"center, center, medium",Ayan,,,,center bottom medium
+77,IMAGE_077.jpg,Electric Guitar,"left, center, medium",Ayan,,,,center top near
+78,IMAGE_078.jpg,Door,"left, center, medium",Ayan,,,,center top far
+79,IMAGE_079.jpg,Blue Notebook,"center, center, close",Joon,,,,center center near
+80,IMAGE_080.jpg,Cereal,"center, center, medium",Joon,,,,center center near
+81,IMAGE_081.jpg,Weight Bench,"right, bottom, medium",Ayan,,,,center bottom medium
+82,IMAGE_082.jpg,Lamp Post,"left, center, medium",Ayan,,,,left center medium
+83,IMAGE_083.jpg,Rubber Band,"left, top, far",Ayan,,,,left top medium
+84,IMAGE_084.jpg,Projector,"center, center, close",Joon,,,,center center near
+85,IMAGE_085.jpg,Blue Street Sign,"right, bottom, far",Ayan,,,,right bottom medium
+86,IMAGE_086.jpg,Green Cup,"right, bottom, close",Joon,,,,right bottom near
+87,IMAGE_087.jpg,Yellow Capped Marker,"left, top, medium",Joon,,,,left top medium
+88,IMAGE_088.jpg,Projector,"center, center, medium",Joon,,,,center center near
+89,IMAGE_089.jpg,Keyboard,"center, top, medium",Ayan,,,,center top medium
+90,IMAGE_090.jpg,Keyboard,"center, center, medium",Ayan,,,,center bottom near
+91,IMAGE_091.jpg,Yellow Capped Marker,"center, center, far",Joon,,,,center top medium
+92,IMAGE_092.jpg,Black Cushioned Chair,"right, center, medium",Joon,,,,right bottom near
+93,IMAGE_093.jpg,Green Cup,"center, bottom, medium",Joon,,,,center bottom medium
+94,IMAGE_094.jpg,Projector,"right, top, medium",Joon,,,,right top near
+95,IMAGE_095.jpg,Boy with blue outfit,"center, bottom, medium",Ayan,,,,center bottom medium
+96,IMAGE_096.jpg,Burj Khalifa,"center, center, medium",Ayan,,,,center top far
+97,IMAGE_097.jpg,Black Cup,"center, center, medium",Ayan,,,,center bottom near
+98,IMAGE_098.jpg,Pool,"center, center, medium",Ayan,,,,center center medium
+99,IMAGE_099.jpg,Lamp Post,"right, center,  medium",Ayan,,,,right center far
+100,IMAGE_100.jpg,Switzerland Flag,"right, bottom, far",Ayan,,,,center center medium
+101,IMAGE_101.jpg,Christmas Tree,"center, center, medium",Ayan,,,,center bottom medium
+102,IMAGE_102.jpg,Water Fountain,"left, center, medium",Ayan,,,,center center near
+103,IMAGE_103.jpg,Giorgio Armani  Bag,"left, top, medium",Ayan,,,,left top medium
+104,IMAGE_104.jpg,Cereal Box,"right, top, medium",joon,,,,right center near
+105,IMAGE_105.jpg,Hairdryer,"center, center, close",Joon,,,,center center near
+106,IMAGE_106.jpg,Electric Guitar,"center, center, medium",Ayan,,,,center center near
+107,IMAGE_107.jpg,Cat,"left, center, medium",Ayan,,,,left center near
+108,IMAGE_108.jpg,Mouse,"right, center, mediun",Ayan,,,,right center near
+109,IMAGE_109.jpg,Padded Chair,"center, center, close",Joon,,,,center center near
+110,IMAGE_110.jpg,Yellow Capped Marker,"center, bottom, medium",Joon,,,,center bottom near
+111,IMAGE_111.jpg,Toothpaste,"left, center, medium",Joon,,,,left top near
+112,IMAGE_112.jpg,Electric Guitar,"left, center, close",Joon,,,,left center near
+113,IMAGE_113.jpg,Cat,"right, center, medium",Ayan,,,,right center near
+114,IMAGE_114.jpg,Trash Can,"center, center, close",Joon,,,,left center near
+115,IMAGE_115.jpg,Sriracha Bottle,"right, center, medium",Joon,,,,center center medium
+116,IMAGE_116.jpg,Globe,"center, center, close",Ayan,,,,center center medium
+117,IMAGE_117.jpg,Shoes,"center, center, medium",Joon,,,,left center near
+118,IMAGE_118.jpg,Candy,"center, center, close ",Joon,,,,center bottom near
+119,IMAGE_119.png,Hat,"center, center, close",Duncan,,,,center bottom near
+120,IMAGE_120.png,Paraglider,"left, center, medium",Duncan,,,,center top medium
+121,IMAGE_121.png,Cross,"center, center, medium",Duncan,,,,center center medium
+122,IMAGE_122.png,Cows,"center, center, far",Duncan,,,,right center far
+123,IMAGE_123.png,Lamp Post,"left, center, close",Duncan,,,,left center near
+124,IMAGE_124.png,Crane,"center, center, medium",Duncan,,,,left center medium
+125,IMAGE_125.png,Jack-o-Lantern,"left, bottom, close",Duncan,,,,left bottom near
+126,IMAGE_126.jpg,Sheep,"center, center, medium",Duncan,,,,center bottom medium
+127,IMAGE_127.jpg,Tea Cup,"right, bottom, close",Duncan,,,,center bottom near
+128,IMAGE_128.jpg,Skull,"center, center, close",Duncan,,,,center top near
+129,IMAGE_129.jpg,Person,"center, center, medium",Duncan,,,,center bottom medium
+130,IMAGE_130.jpg,Person,"center, center, medium",Duncan,,,,center bottom medium
+131,IMAGE_131.jpg,Memory Cards,"center, center, close",Duncan,,,,left center near
+132,IMAGE_132.jpg,Boat,"center, center, medium",Duncan,,,,center bottom near
+133,IMAGE_133.jpg,Window,"center, top, medium",Duncan,,,,center top far
+134,IMAGE_134.jpg,Person,"center, center, close",Duncan,,,,center center near
+135,IMAGE_135.jpg,Rings,"center, center, close",Duncan,,,,center center near
+136,IMAGE_136.jpg,Fireplace,"center, center, medium",Duncan,,,,center bottom near

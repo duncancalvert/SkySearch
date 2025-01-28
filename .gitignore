@@ -4,3 +4,7 @@
 SkySearchImages/*.jpg
 gcp_credentials.json
 *.svg
+*.jpg
+*.DS_Store
+*.json
+*.png

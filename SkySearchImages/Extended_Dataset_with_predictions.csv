@@ -1,0 +1,308 @@
+Image number,Image File name,Item in image,True item  Location,Annotator,Is In Picture,ChatGPT 4o prediction GLAD
+0,IMAGE_000.jpg,Blue recycling bin,"center, center, far",Zach,Yes,center bottom far
+1,IMAGE_000.jpg,Apple,"right, bottom, near",Zach,No,NA
+2,IMAGE_001.jpg,Black cup,"left, bottom, medium",Zach,Yes,left bottom near
+3,IMAGE_001.jpg,Person,"center, center, near",Zach,No,NA
+4,IMAGE_002.jpg,Crock sandal,"center, center, medium",Zach,Yes,center center near
+5,IMAGE_002.jpg,Green Cup,"top, center, far",Zach,No,NA
+6,IMAGE_003.jpg,Amazon box,"center, center, close",Zach,Yes,center center near
+7,IMAGE_004.jpg,Basketball,"center, center, medium",Zach,Yes,right bottom near
+8,IMAGE_005.jpg,Amazon box,"right, top, close",Zach,Yes,center top near
+9,IMAGE_006.jpg,Globe,"left, bottom, medium",Zach,Yes,left center medium
+10,IMAGE_007.jpg,Basketball,"right, top, medium",Zach,Yes,right top medium
+11,IMAGE_007.jpg,Knife,"left, top, medium",Zach,Yes,left top medium
+12,IMAGE_008.jpg,Handheld vacuum,"center, center, medium",Zach,Yes,center center near
+13,IMAGE_009.jpg,Light post,"center, center, far",Zach,Yes,center center medium
+14,IMAGE_010.jpg,Candle stick,"center, center, far",Zach,Yes,center center near
+15,IMAGE_010.jpg,Cat,"top, right, far",Zach,Yes,right top far
+16,IMAGE_011.jpg,Short water bottle,"center, center, close",Zach,Yes,center center near
+17,IMAGE_012.jpg,Les Paul Guiter,"left, center, medium",Zach,Yes,center center near
+18,IMAGE_013.jpg,Light post,"left, center, far",Zach,Yes,left center near
+19,IMAGE_014.jpg,Knife,"center, top, medium",Zach,Yes,center center medium
+20,IMAGE_014.jpg,Flowers,"right, top, close",Zach,Yes,right top near
+21,IMAGE_015.jpg,Keyboard,"center, top, close",Zach,Yes,center top medium
+22,IMAGE_016.jpg,Keyboard,"center, center, close",Zach,Yes,center bottom near
+23,IMAGE_016.jpg,Mac Computer,"center, top, medium",Zach,Yes,center top medium
+24,IMAGE_017.jpg,Black cup,"center, center, medium",Zach,Yes,center center near
+25,IMAGE_017.jpg,Blue Cup,"center, top, far",Zach,Yes,center top far
+26,IMAGE_018.jpg,Light post,"right, center, far",Zach,Yes,right center medium
+27,IMAGE_019.jpg,Les Paul Guiter,"center, center, medium",Zach,Yes,center center medium
+28,IMAGE_020.jpg,Cat,"left, top, medium",Zach,Yes,left center near
+29,IMAGE_021.jpg,Computer Mouse,"right, center, medium",Zach,Yes,right center near
+30,IMAGE_022.jpg,Les Paul Guiter,"left, top, medium",Zach,Yes,left center near
+31,IMAGE_023.jpg,Cat,"right, center, medium",Zach,Yes,right center near
+32,IMAGE_024.jpg,Flowers,"center, center, medium",Zach,Yes,center center near
+33,IMAGE_024.jpg,Knife,"left, center, medium",Zach,Yes,left center near
+34,IMAGE_025.jpg,Short water bottle,"left, bottom, medium",Zach,Yes,left bottom near
+35,IMAGE_025.jpg,Blue Water Bottle,"left, top, far",Zach,Yes,NA
+36,IMAGE_026.jpg,Candle stick,"center, center, close",Zach,Yes,center bottom near
+37,IMAGE_027.jpg,Short water bottle,"right, top, close",Zach,Yes,left top near
+38,IMAGE_028.jpg,Candle stick,"right, center, medium",Zach,Yes,center bottom near
+39,IMAGE_029.jpg,Flowers,"right, center, medium",Zach,Yes,right center near
+40,IMAGE_029.jpg,Knife,"left, center, medium",Zach,Yes,center center medium
+41,IMAGE_029.jpg,Spray Bottle,"left, center, medium",Zach,Yes,left top medium
+42,IMAGE_030.jpg,Cat,"center, center, medium",Zach,Yes,center center near
+43,IMAGE_031.jpg,Computer Mouse,"center, center, medium",Zach,Yes,center center medium
+44,IMAGE_032.jpg,Basketball,"left, bottom, medium",Zach,Yes,left bottom near
+45,IMAGE_033.jpg,Handheld vacuum,"center, top, medium",Zach,Yes,right center near
+46,IMAGE_034.jpg,Chair,"center, center, medium",Zach,Yes,center bottom medium
+47,IMAGE_035.jpg,Globe,"right, bottom, medium",Zach,Yes,right center medium
+48,IMAGE_036.jpg,Crock sandal,"right, center, medium",Zach,Yes,right center near
+49,IMAGE_037.jpg,Crock sandal,"left, center, medium",Zach,Yes,left bottom near
+50,IMAGE_038.jpg,Globe,"center, center, medium",Zach,Yes,left center medium
+51,IMAGE_039.jpg,Chair,"right, center, medium",Zach,Yes,right bottom medium
+52,IMAGE_040.jpg,Basketball,"left, top, medium",Zach,Yes,left top medium
+53,IMAGE_041.jpg,Amazon box,"left, bottom, close",Zach,Yes,center bottom near
+54,IMAGE_042.jpg,Pool,"center, center, medium",Ayan,Yes,center center medium
+55,IMAGE_043.jpg,Person,"left, center, close",Ayan,Yes,center bottom near
+56,IMAGE_043.jpg,White Car,"right, center, far",Ayan,Yes,right center far
+57,IMAGE_044.jpg,Tree,"center, bottom, medium",Ayan,Yes,left center medium
+58,IMAGE_045.jpg,Trash Can,"center, center, far",Ayan,Yes,center bottom far
+59,IMAGE_046.jpg,Cup,"left, bottom, close",Ayan,Yes,left bottom near
+60,IMAGE_047.jpg,Skate Board,"center, center, close",Joon,Yes,left bottom near
+61,IMAGE_048.jpg,Candy,"center, center, close",Joon,Yes,center center medium
+62,IMAGE_049.jpg,Cereal,"center, center, close",Joon,Yes,left center near
+63,IMAGE_050.jpg,Crock sandal,"center, center, close",Ayan,Yes,center center near
+64,IMAGE_051.jpg,Amazon box,"center, center, close",Ayan,Yes,center center near
+65,IMAGE_052.jpg,Tree,"right, center, medium",Ayan,Yes,left top far
+66,IMAGE_053.jpg,Basketball,"center, center, medium",Ayan,Yes,right bottom medium
+67,IMAGE_054.jpg,Keyboard,"right, center, medium",Joon,Yes,right center near
+68,IMAGE_054.jpg,Tissue Paper,"center, center, medium",Joon,Yes,center center near
+69,IMAGE_055.jpg,Cereal,"left, center, medium",Joon,Yes,center bottom near
+70,IMAGE_055.jpg,Water Bottle,"right, center, medium",Joon,Yes,right center near
+71,IMAGE_055.jpg,One Dollar Bill,"right, center, medium",Joon,Yes,NA
+72,IMAGE_056.jpg,Ornaments,"center, top, far",Ayan,Yes,right top medium
+73,IMAGE_057.jpg,Candy,"right, center, medium",Joon,Yes,right bottom medium
+74,IMAGE_058.jpg,Dell Laptop,"right, bottom, medium",Joon,Yes,right center near
+75,IMAGE_058.jpg,Orange Circle,"left, bottom, far",Joon,Yes,left bottom near
+76,IMAGE_059.jpg,Lamp Post,"center, center, medium",Ayan,Yes,center top medium
+77,IMAGE_059.jpg,Maroon Colored Sign,"right, center, near",Ayan,Yes,right bottom near
+78,IMAGE_060.jpg,Amazon box,"right, top, medium",Ayan,Yes,center top near
+79,IMAGE_061.jpg,Globe,"left, bottom, close ",Ayan,Yes,left center medium
+80,IMAGE_062.jpg,Basketball,"right, top, medium",Ayan,Yes,right top medium
+81,IMAGE_062.jpg,Knife,"left, center, far",Ayan,Yes,left top medium
+82,IMAGE_063.jpg,Cereal,"right, bottom, close",Joon,Yes,right bottom near
+83,IMAGE_064.jpg,Skate Board,"center, center, close",Joon,Yes,left center near
+84,IMAGE_065.jpg,Lid,"right, bottom, medium",Joon,Yes,right bottom near
+85,IMAGE_065.jpg,Padded Chair,"right, center, medium",Joon,Yes,right bottom near
+86,IMAGE_066.jpg,Turkish Flah,"left, center, far",Ayan,Yes,left top medium
+87,IMAGE_067.jpg,Vaccum Cleaner,"center, center, close",Ayan,Yes,right center near
+88,IMAGE_068.jpg,UFC Sign,"right, top, medium",Ayan,Yes,center top far
+89,IMAGE_068.jpg,Person with blue shorts,"center, center, near",Ayan,Yes,center center medium
+90,IMAGE_069.jpg,Lamp Post,"center, center,  far",Ayan,Yes,center center medium
+91,IMAGE_070.jpg,Hot Airballoon with Red Stripes,"center, top, far",Ayan,Yes,right top far
+92,IMAGE_071.jpg,Red Flowers,"center, center, far",Ayan,Yes,right center near
+93,IMAGE_072.jpg,Toothpaste,"center, center, close",Joon,Yes,center center near
+94,IMAGE_073.jpg,Candle,"center, center, far",Ayan,Yes,center center near
+95,IMAGE_074.jpg,Water Bottle,"center, center, medium",Ayan,Yes,center center near
+96,IMAGE_075.jpg,Windows,"center, center, medium",Ayan,Yes,center center far
+97,IMAGE_076.jpg,Hammock,"center, center, medium",Ayan,Yes,center center medium
+98,IMAGE_077.jpg,Electric Guitar,"left, center, medium",Ayan,Yes,center center near
+99,IMAGE_078.jpg,Door,"left, center, medium",Ayan,Yes,center center far
+100,IMAGE_079.jpg,Blue Notebook,"center, center, close",Joon,Yes,center center near
+101,IMAGE_080.jpg,Cereal,"center, center, medium",Joon,Yes,center center medium
+102,IMAGE_081.jpg,Weight Bench,"right, bottom, medium",Ayan,Yes,center bottom medium
+103,IMAGE_082.jpg,Lamp Post,"left, center, medium",Ayan,Yes,left center near
+104,IMAGE_083.jpg,Rubber Band,"left, top, far",Ayan,Yes,left center medium
+105,IMAGE_083.jpg,Knife,"center, center, medium",Ayan,Yes,center center medium
+106,IMAGE_084.jpg,Projector,"center, center, close",Joon,Yes,center center near
+107,IMAGE_085.jpg,Blue Street Sign,"right, bottom, far",Ayan,Yes,right center medium
+108,IMAGE_086.jpg,Green Cup,"right, bottom, close",Joon,Yes,right bottom near
+109,IMAGE_086.jpg,Mason Jar,"left, center, near",Joon,Yes,left center medium
+110,IMAGE_087.jpg,Yellow Capped Marker,"left, top, medium",Joon,Yes,left top medium
+111,IMAGE_087.jpg,Blue Capped Marker,"left, top, medium",Joon,Yes,center top medium
+112,IMAGE_088.jpg,Projector,"center, center, medium",Joon,Yes,center center near
+113,IMAGE_088.jpg,remote controller,"right, bottom, near",Joon,Yes,right bottom near
+114,IMAGE_089.jpg,Keyboard,"center, top, medium",Ayan,Yes,center top medium
+115,IMAGE_090.jpg,Keyboard,"center, center, medium",Ayan,Yes,center bottom near
+116,IMAGE_090.jpg,Macbook Laptop,"center, top, medium",Ayan,Yes,center top medium
+117,IMAGE_091.jpg,Yellow Capped Marker,"center, center, far",Joon,Yes,center center near
+118,IMAGE_091.jpg,Blue Pot,"left, center, medium",Joon,Yes,left center near
+119,IMAGE_092.jpg,Black Cushioned Chair,"right, center, medium",Joon,Yes,right center near
+120,IMAGE_093.jpg,Green Cup,"center, bottom, medium",Joon,Yes,right bottom medium
+121,IMAGE_094.jpg,Projector,"right, top, medium",Joon,Yes,right top near
+122,IMAGE_095.jpg,Boy with blue outfit,"center, bottom, medium",Ayan,Yes,left center medium
+123,IMAGE_096.jpg,Burj Khalifa,"center, center, medium",Ayan,Yes,center top far
+124,IMAGE_097.jpg,Black Cup,"center, center, medium",Ayan,Yes,center center near
+125,IMAGE_097.jpg,Blue Cup,"center, top, far",Ayan,Yes,center top far
+126,IMAGE_098.jpg,Pool,"center, center, medium",Ayan,Yes,center center medium
+127,IMAGE_099.jpg,Lamp Post,"right, center,  medium",Ayan,Yes,right center medium
+128,IMAGE_100.jpg,Switzerland Flag,"right, bottom, far",Ayan,Yes,right center medium
+129,IMAGE_100.jpg,Welsh Flag,"center, bottom, far",Ayan,Yes,center top medium
+130,IMAGE_101.jpg,Christmas Tree,"center, center, medium",Ayan,Yes,center center medium
+131,IMAGE_102.jpg,Water Fountain,"left, center, medium",Ayan,Yes,center center near
+132,IMAGE_103.jpg,Giorgio Armani  Bag,"left, top, medium",Ayan,Yes,left top medium
+133,IMAGE_103.jpg,Boss Bag,"left, bottom, near",Ayan,Yes,left center near
+134,IMAGE_104.jpg,Cereal Box,"right, top, medium",joon,Yes,center center near
+135,IMAGE_105.jpg,Hairdryer,"center, center, close",Joon,Yes,center center near
+136,IMAGE_106.jpg,Electric Guitar,"center, center, medium",Ayan,Yes,center center medium
+137,IMAGE_107.jpg,Cat,"left, center, medium",Ayan,Yes,left center near
+138,IMAGE_108.jpg,Mouse,"right, center, mediun",Ayan,Yes,right center near
+139,IMAGE_109.jpg,Padded Chair,"center, center, close",Joon,Yes,center center near
+140,IMAGE_110.jpg,Yellow Capped Marker,"center, bottom, medium",Joon,Yes,right bottom near
+141,IMAGE_110.jpg,Clorox Cylinder,"center, center, medium",Joon,Yes,left center medium
+142,IMAGE_111.jpg,Toothpaste,"left, center, medium",Joon,Yes,left center near
+143,IMAGE_112.jpg,Electric Guitar,"left, center, close",Joon,Yes,left center near
+144,IMAGE_113.jpg,Cat,"right, center, medium",Ayan,Yes,right center near
+145,IMAGE_114.jpg,Trash Can,"center, center, close",Joon,Yes,left center near
+146,IMAGE_115.jpg,Sriracha Bottle,"right, center, medium",Joon,Yes,center center medium
+147,IMAGE_115.jpg,Soy Sauce Bottle,"right, center, medium",Joon,Yes,left center medium
+148,IMAGE_116.jpg,Globe,"center, center, close",Ayan,Yes,left center near
+149,IMAGE_117.jpg,Shoes,"center, center, medium",Joon,Yes,left center near
+150,IMAGE_118.jpg,Candy,"center, center, close ",Joon,Yes,center bottom near
+151,IMAGE_119.png,Hat,"center, center, close",Duncan,Yes,center bottom near
+152,IMAGE_120.png,Paraglider,"left, center, medium",Duncan,Yes,center top medium
+153,IMAGE_121.png,Cross,"center, center, medium",Duncan,Yes,center top medium
+154,IMAGE_122.png,Cows,"center, center, far",Duncan,Yes,center center medium
+155,IMAGE_122.png,Orange Car,"right, bottom, far",Duncan,Yes,right bottom near
+156,IMAGE_123.png,Lamp Post,"left, center, close",Duncan,Yes,left center near
+157,IMAGE_124.png,Crane,"center, center, medium",Duncan,Yes,center center medium
+158,IMAGE_125.png,Jack-o-Lantern,"left, bottom, close",Duncan,Yes,left bottom near
+159,IMAGE_126.jpg,Sheep,"center, center, medium",Duncan,Yes,center bottom medium
+160,IMAGE_127.jpg,Tea Cup,"right, bottom, close",Duncan,Yes,center center near
+161,IMAGE_128.jpg,Skull,"center, center, close",Duncan,Yes,center center medium
+162,IMAGE_129.jpg,Person,"center, center, medium",Duncan,Yes,center bottom medium
+163,IMAGE_130.jpg,Person,"center, center, medium",Duncan,Yes,center bottom medium
+164,IMAGE_131.jpg,Memory Cards,"center, center, close",Duncan,Yes,left center near
+165,IMAGE_132.jpg,Boat,"center, center, medium",Duncan,Yes,center bottom near
+166,IMAGE_133.jpg,Window,"center, top, medium",Duncan,Yes,center top far
+167,IMAGE_134.jpg,Person,"center, center, close",Duncan,Yes,center center near
+168,IMAGE_135.jpg,Rings,"center, center, close",Duncan,Yes,center center near
+169,IMAGE_136.jpg,Fireplace,"center, center, medium",Duncan,Yes,center bottom medium
+170,IMAGE_000.jpg,Clay Pot,"top, center, far",,No,NA
+171,IMAGE_001.jpg,Wallet,"center, center, far",,No,NA
+172,IMAGE_002.jpg,Glasses,"left, top, medium",,No,NA
+173,IMAGE_003.jpg,Wallet,"center, top, close",,No,NA
+174,IMAGE_004.jpg,Tomato,"center, center,  far",,No,NA
+175,IMAGE_005.jpg,Tomato,"center,bottom, far",,No,NA
+176,IMAGE_006.jpg,Rubber Duck,"center, center,  far",,No,NA
+177,IMAGE_007.jpg,Bookmark,"center, center, far",,No,NA
+178,IMAGE_008.jpg,Headphones,"right, center,  medium",,No,NA
+179,IMAGE_009.jpg,Bookmark,"center, center, medium",,No,NA
+180,IMAGE_010.jpg,Spoon,"center, center, close",,No,NA
+181,IMAGE_011.jpg,Leaf,"center, bottom, medium",,No,NA
+182,IMAGE_012.jpg,Headphones,"left, bottom, close ",,No,NA
+183,IMAGE_013.jpg,Headphones,"left, bottom, close ",,No,NA
+184,IMAGE_014.jpg,Plastic Fork,"left, center, medium",,No,NA
+185,IMAGE_015.jpg,Leaf,"center, top, medium",,No,NA
+186,IMAGE_016.jpg,Bookmark,"center,center, medium",,No,NA
+187,IMAGE_017.jpg,Wallet,"center, center, near",,No,na
+188,IMAGE_018.jpg,Glasses,"left, center, medium",,No,NA
+189,IMAGE_019.jpg,Clay Pot,"left, bottom, close ",,No,NA
+190,IMAGE_020.jpg,Pool Stick,"center, top, close",,No,NA
+191,IMAGE_021.jpg,Leaf,"left, center, far",,No,NA
+192,IMAGE_022.jpg,Tomato,"center, center, near",,No,NA
+193,IMAGE_023.jpg,Clay Pot,"left, center, far",,No,NA
+194,IMAGE_024.jpg,Headphones,"left, bottom, far",,No,NA
+195,IMAGE_025.jpg,Piano,"left, bottom, close ",,No,NA
+196,IMAGE_026.jpg,Pool Stick,"right, top, medium",,No,NA
+197,IMAGE_027.jpg,Headphones,"center, center, far",,No,NA
+198,IMAGE_028.jpg,Wallet,"right, center,  medium",,No,NA
+199,IMAGE_029.jpg,Spoon,"left, bottom, far",,No,center center medium
+200,IMAGE_030.jpg,Clay Pot,"left, center, medium",,No,NA
+201,IMAGE_031.jpg,Pool Stick,"left, center, medium",,No,NA
+202,IMAGE_032.jpg,Radio,"right, center, far",,No,NA
+203,IMAGE_033.jpg,Pool Stick,"right, center, mediun",,No,NA
+204,IMAGE_034.jpg,Glasses,"left, bottom, close ",,No,NA
+205,IMAGE_035.jpg,Leaf,"right, bottom, near",,No,NA
+206,IMAGE_036.jpg,Wallet,"left, bottom, close ",,No,NA
+207,IMAGE_037.jpg,Tomato,"center, center, near",,No,NA
+208,IMAGE_038.jpg,Clay Pot,"center, bottom, medium",,No,NA
+209,IMAGE_039.jpg,Plastic Fork,"left, bottom, near",,No,NA
+210,IMAGE_040.jpg,Tomato,"right, center, near",,No,NA
+211,IMAGE_041.jpg,Spoon,"center, bottom, medium",,No,na
+212,IMAGE_042.jpg,Wallet,"center, top, close",,No,NA
+213,IMAGE_043.jpg,Rubber Duck,"right, bottom, far",,No,NA
+214,IMAGE_044.jpg,Piano,"left, top, medium",,No,NA
+215,IMAGE_045.jpg,Tomato,"center, top, far",,No,na
+216,IMAGE_046.jpg,Pool Stick,"right, bottom, near",,No,NA
+217,IMAGE_047.jpg,Clay Pot,"right, center,  medium",,No,NA
+218,IMAGE_048.jpg,Tomato,"right, bottom, near",,No,NA
+219,IMAGE_049.jpg,Glasses,"right, bottom, near",,No,NA
+220,IMAGE_050.jpg,Plastic Fork,"left, bottom, close ",,No,NA
+221,IMAGE_051.jpg,Radio,"right, center,  medium",,No,NA
+222,IMAGE_052.jpg,Pool Stick,"left, bottom, medium",,No,NA
+223,IMAGE_053.jpg,Glasses,"center,center, medium",,No,NA
+224,IMAGE_054.jpg,Mouse Pad,"center, center, far",,No,center bottom near
+225,IMAGE_055.jpg,Bookmark,"center, bottom, medium",,No,NA
+226,IMAGE_056.jpg,Pool Stick,"left, bottom, near",,No,NA
+227,IMAGE_057.jpg,Leaf,"center, center,  far",,No,NA
+228,IMAGE_058.jpg,Plastic Fork,"right, center, medium",,No,NA
+229,IMAGE_059.jpg,Leaf,"left, bottom, medium",,No,left center medium
+230,IMAGE_060.jpg,Glasses,"right, bottom, close",,No,NA
+231,IMAGE_061.jpg,Radio,"top, right, far",,No,NA
+232,IMAGE_062.jpg,Bookmark,"right, center,  medium",,No,NA
+233,IMAGE_063.jpg,Tomato,"top, center, far",,No,NA
+234,IMAGE_064.jpg,Pool Stick,"left, center, close",,No,NA
+235,IMAGE_065.jpg,Piano,"left, bottom, far",,No,NA
+236,IMAGE_066.jpg,Mouse Pad,"center, center, far",,No,NA
+237,IMAGE_067.jpg,Tomato,"left, bottom, near",,No,NA
+238,IMAGE_068.jpg,Leaf,"left, center, far",,No,NA
+239,IMAGE_069.jpg,Clay Pot,"right, bottom, near",,No,NA
+240,IMAGE_070.jpg,Bookmark,"left, center, far",,No,NA
+241,IMAGE_071.jpg,Piano,"center, center, near",,No,NA
+242,IMAGE_072.jpg,Glasses,"left, top, far",,No,NA
+243,IMAGE_073.jpg,Clay Pot,"center,center, medium",,No,NA
+244,IMAGE_074.jpg,Radio,"left, center, close",,No,NA
+245,IMAGE_075.jpg,Headphones,"left, bottom, far",,No,NA
+246,IMAGE_076.jpg,Glasses,"left, center, close",,No,na
+247,IMAGE_077.jpg,Tomato,"center, center, close ",,No,NA
+248,IMAGE_078.jpg,Tomato,"left, bottom, close ",,No,NA
+249,IMAGE_079.jpg,Wallet,"center, center, far",,No,NA
+250,IMAGE_080.jpg,Radio,"center, center, far",,No,NA
+251,IMAGE_081.jpg,Glasses,"right, center, far",,No,NA
+252,IMAGE_082.jpg,Pool Stick,"top, center, far",,No,NA
+253,IMAGE_083.jpg,Glasses,"right, bottom, medium",,No,NA
+254,IMAGE_084.jpg,Bookmark,"left, bottom, close",,No,NA
+255,IMAGE_085.jpg,Mouse Pad,"left, bottom, medium",,No,NA
+256,IMAGE_086.jpg,Headphones,"right, top, medium",,No,NA
+257,IMAGE_087.jpg,Clay Pot,"center, top, far",,No,NA
+258,IMAGE_088.jpg,Wallet,"left, top, far",,No,NA
+259,IMAGE_089.jpg,Plastic Fork,"right, top, medium",,No,NA
+260,IMAGE_090.jpg,Glasses,"center, top, medium",,No,NA
+261,IMAGE_091.jpg,Mouse Pad,"right, top, close",,No,NA
+262,IMAGE_092.jpg,Glasses,"center, center, close ",,No,NA
+263,IMAGE_093.jpg,Piano,"right, bottom, near",,No,NA
+264,IMAGE_094.jpg,Glasses,"center, center, close",,No,NA
+265,IMAGE_095.jpg,Wallet,"center, center, far",,No,NA
+266,IMAGE_096.jpg,Bookmark,"left, center, far",,No,NA
+267,IMAGE_097.jpg,Piano,"center, center, close",,No,NA
+268,IMAGE_098.jpg,Glasses,"top, center, far",,No,NA
+269,IMAGE_099.jpg,Pool Stick,"left, top, far",,No,NA
+270,IMAGE_100.jpg,Mouse Pad,"center, center, far",,No,NA
+271,IMAGE_101.jpg,Bookmark,"right, center, far",,No,NA
+272,IMAGE_102.jpg,Bookmark,"center, center, close",,No,NA
+273,IMAGE_103.jpg,Headphones,"right, center, near",,No,NA
+274,IMAGE_104.jpg,Pool Stick,"center, center, close",,No,NA
+275,IMAGE_105.jpg,Spoon,"top, center, far",,No,NA
+276,IMAGE_106.jpg,Clay Pot,"center, top, medium",,No,NA
+277,IMAGE_107.jpg,Radio,"center, top, medium",,No,NA
+278,IMAGE_108.jpg,Radio,"center,bottom, far",,No,NA
+279,IMAGE_109.jpg,Leaf,"right, bottom, medium",,No,NA
+280,IMAGE_110.jpg,Mouse Pad,"center,bottom, far",,No,NA
+281,IMAGE_111.jpg,Headphones,"left, center, close",,No,NA
+282,IMAGE_112.jpg,Glasses,"left, center, close",,No,NA
+283,IMAGE_113.jpg,Wallet,"right, center, far",,No,NA
+284,IMAGE_114.jpg,Mouse Pad,"left, bottom, medium",,No,NA
+285,IMAGE_115.jpg,Spoon,"top, center, far",,No,NA
+286,IMAGE_116.jpg,Pool Stick,"center, center, far",,No,na
+287,IMAGE_117.jpg,Tomato,"right, center,  medium",,No,NA
+288,IMAGE_118.jpg,Wallet,"center, top, close",,No,NA
+289,IMAGE_119.png,Glasses,"center, bottom, medium",,No,NA
+290,IMAGE_120.png,Glasses,"center, center, far",,No,NA
+291,IMAGE_121.png,Mouse Pad,"right, bottom, near",,No,NA
+292,IMAGE_122.png,Spoon,"left, center, near",,No,NA
+293,IMAGE_123.png,Bookmark,"center, top, far",,No,NA
+294,IMAGE_124.png,Leaf,"left, top, medium",,No,NA
+295,IMAGE_125.png,Wallet,"center,bottom, far",,No,NA
+296,IMAGE_126.jpg,Tomato,"right, top, close",,No,na
+297,IMAGE_127.jpg,Wallet,"right, top, medium",,No,NA
+298,IMAGE_128.jpg,Wallet,"left, bottom, close",,No,NA
+299,IMAGE_129.jpg,Radio,"left, bottom, close",,No,na
+300,IMAGE_130.jpg,Glasses,"left, bottom, far",,No,center top medium
+301,IMAGE_131.jpg,Pool Stick,"center, center, close ",,No,NA
+302,IMAGE_132.jpg,Leaf,"center,bottom, far",,No,NA
+303,IMAGE_133.jpg,Radio,"left, center, medium",,No,NA
+304,IMAGE_134.jpg,Spoon,"center, top, medium",,No,NA
+305,IMAGE_135.jpg,Tomato,"center,center, medium",,No,NA
+306,IMAGE_136.jpg,Tomato,"left, center, close",,No,NA

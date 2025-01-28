@@ -26,7 +26,7 @@ def show_image(image):
         cv2.destroyAllWindows()
 
 def main():
-    llm = LLM(info.API_KEY, info.ORGANIZTION, info.PROJECT)
+    llm = LLM(info.API_KEY, info.ORGANIZATION, info.PROJECT)
 
     image = llm.get_test_image()
     show_image(image)
