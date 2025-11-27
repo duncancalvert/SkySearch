@@ -39,6 +39,8 @@ For example, during a test flight, SkySearch successfully identified the book *C
 
 The SkySearch repository is organized for modular development, separating drone control logic, vision model utilities, and evaluation datasets. Below is a summary of the major folders and files:
 
+
+```
 SkySearch/
 ├── media/images/                      # Project images, logos, and visual assets
 ├── parameters/                        # Prompt templates and model configuration files
@@ -55,6 +57,7 @@ SkySearch/
 ├── pyproject.toml / setup.cfg         # Packaging and installation metadata
 ├── README.md                          # Project overview and instructions
 └── .gitignore / .dockerignore         # Ignore rules for Git and Docker
+```
 
 ## ArXiv Paper Link
 
