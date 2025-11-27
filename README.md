@@ -6,7 +6,7 @@
 # SkySearch: Generalized Object Search Using UAVs and Multimodal Models
 UChicago Robotics Capstone December 2024
 
-| Authors | Duncan Calvert, Joon Park, Zach Farahany, Mohammad Ayan Raheel |
+| Authors | Zach Farahany, Duncan Calvert, Joon Park, Mohammad Ayan Raheel |
 | --- | --- |
 | Package | [![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org) |
 | Meta | [License - MIT](https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE) |
