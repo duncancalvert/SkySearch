@@ -6,11 +6,10 @@
 # SkySearch: Generalized Object Search Using UAVs and Multimodal Models
 UChicago Robotics Capstone December 2024
 
-|||
+| Authors | Duncan Calvert, Joon Park, Zach Farahany, Mohammad Ayan Raheel |
 | --- | --- |
-| Authors | Duncan Calvert, Joon Park, Zach Farahany, Mohammad Ayan Raheel|
-| Package | [![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org)|
-| Meta | [License - MIT](https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE)|
+| Package | [![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org) |
+| Meta | [License - MIT](https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE) |
 
 ## What is it?
 **SkySearch** is a groundbreaking research project that leverages multimodal models to enable drones to autonomously perform open-vocabulary search tasks. Unlike traditional object detection systems constrained by fixed class labels and requiring retraining for new objects, SkySearch empowers drones to locate targets using natural language descriptions or reference images—without additional model fine-tuning.
