@@ -67,7 +67,7 @@ We are in the process of preparing our research paper for submission to arXiv. O
 
 We created a detailed PowerPoint presentation to showcase the SkySearch project, including its objectives, methodology, and results. The presentation covers the technical aspects of integrating multimodal large language models with UAVs, as well as the challenges and solutions encountered during development.
 
-You can download the PowerPoint presentation [here](https://example.com/skysearch-presentation).
+You can download the PowerPoint presentation [here](media/ADSP_34002_UChicago_Robotic_Capstone_SkySearch.pdf).
 
 ## MS in Applied Data Science Conference Presentation
 
