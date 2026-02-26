@@ -3,18 +3,16 @@
   <img alt="SkySearch Logo" src="media/images/SkySearch_Logos/SkySearchLogo5_WithText.png">
 </picture>
 
-# SkySearch: Generalized Object Search Using UAVs and Multimodal LLMs
+# SkySearch: Generalized Object Search Using UAVs and Multimodal Models
 UChicago Robotics Capstone December 2024
 
-
-| Item | Details |
+| Authors | Zach Farahany, Duncan Calvert, Joon Park, Mohammad Ayan Raheel |
 | --- | --- |
-| Authors | Duncan Calvert, Joon Park, Zach Farahany, Mohammad Ayan Raheel |
 | Package | [![PyPI Latest Release](https://img.shields.io/pypi/v/pandas.svg)](https://pypi.org) |
 | Meta | [License - MIT](https://github.com/DonutsDuncan/SkySearch_UAV/blob/main/LICENSE) |
 
 ## What is it?
-**SkySearch** is a groundbreaking research project that leverages multimodal large language models (MLLMs) to enable drones to autonomously perform open-vocabulary search tasks. Unlike traditional object detection systems constrained by fixed class labels and requiring retraining for new objects, SkySearch empowers drones to locate targets using natural language descriptions or reference images—without additional model fine-tuning.
+**SkySearch** is a groundbreaking research project that leverages multimodal models to enable drones to autonomously perform open-vocabulary search tasks. Unlike traditional object detection systems constrained by fixed class labels and requiring retraining for new objects, SkySearch empowers drones to locate targets using natural language descriptions or reference images—without additional model fine-tuning.
 
 For example, during a test flight, SkySearch successfully identified the book *Cracking the Coding Interview* when given the target description: "something that can help me with an interview at Meta." By integrating advanced vision-language models like GPT-4o, Gemini 1.5, and Claude 3, SkySearch enables drones to reason about their environment, adapt to dynamic conditions, and identify novel objects in real time. This innovation represents a significant step forward in autonomous UAV capabilities, combining reasoning, adaptability, and precision.
 
@@ -41,7 +39,8 @@ For example, during a test flight, SkySearch successfully identified the book *C
 
 The SkySearch repository is organized for modular development, separating drone control logic, vision model utilities, and evaluation datasets. Below is a summary of the major folders and files:
 
-```text
+
+```
 SkySearch/
 ├── media/images/                      # Project images, logos, and visual assets
 ├── parameters/                        # Prompt templates and model configuration files
